@@ -142,7 +142,7 @@ function About() {
 
                   <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                     <p className="text-white font-bold text-center tracking-widest uppercase text-xs">
-                      Desenvolvido com Paixão
+                      "Criar é permitir que o invisível se torne eterno na superfície do mundo."
                     </p>
                   </div>
                 </div>

@@ -1,24 +1,49 @@
 "use client";
 import { skillsData } from "@/../utils/Data/skills";
-import { getSkillIcon, getSkillColor } from "@/../utils/skill-icons";
+import { getSkillIcon, getSkillColor, SkillIcon } from "@/../utils/skill-icons";
 import Marquee from "react-fast-marquee";
 import SectionReveal from "../SectionReveal";
+import Image from "next/image";
+
+// Componente que renderiza SVG ou Icon
+const SkillIconRender = ({ iconData }: { iconData: SkillIcon }) => {
+  if (iconData.type === "svg") {
+    return (
+      <Image
+        src={iconData.path}
+        alt="Skill"
+        width={32}
+        height={32}
+        className="w-8 h-8 object-contain"
+      />
+    );
+  }
+  
+  const IconComponent = iconData.component;
+  return <IconComponent className="w-8 h-8" />;
+};
 
 const SkillItem = ({ skill }: { skill: string }) => {
-  const Icon = getSkillIcon(skill);
+  const iconData = getSkillIcon(skill);
   const color = getSkillColor(skill);
+  const isSvg = iconData.type === "svg";
 
   return (
     <div className="mx-4 my-4 group">
-      <div className="relative px-8 py-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-3xl transition-all duration-500 hover:border-red-500/30 hover:bg-white/[0.05] flex items-center gap-4 shadow-xl">
+      <div className="relative px-8 py-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-3xl transition-all duration-500 hover:border-white/20 hover:bg-white/[0.05] flex items-center gap-4 shadow-xl">
+        
         <div
-          className="text-3xl transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_var(--icon-color)]"
-          style={{ "--icon-color": color } as React.CSSProperties}
+          className="text-3xl transition-all duration-500 group-hover:scale-110"
+          style={{ 
+            filter: `drop-shadow(0 0 8px ${color}40)`,
+            color: isSvg ? undefined : color
+          }}
         >
-          <Icon style={{ color: color }} />
+          <SkillIconRender iconData={iconData} />
         </div>
+        
         <div className="flex flex-col">
-          <span className="text-sm font-bold text-white tracking-wide uppercase group-hover:text-red-500 transition-colors">
+          <span className="text-sm font-bold text-white tracking-wide uppercase group-hover:text-white transition-colors">
             {skill}
           </span>
           <span className="text-[10px] text-slate-500 font-medium uppercase tracking-tighter">
@@ -27,7 +52,7 @@ const SkillItem = ({ skill }: { skill: string }) => {
         </div>
 
         <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500 pointer-events-none blur-xl"
+          className="absolute inset-0 opacity-0 group-hover:opacity-15 rounded-2xl transition-opacity duration-500 pointer-events-none blur-xl"
           style={{ backgroundColor: color }}
         />
       </div>
@@ -40,8 +65,7 @@ function Skills() {
   const secondHalf = skillsData.slice(Math.ceil(skillsData.length / 2));
 
   return (
-    <div id="skills" className="relative z-50 py-24 lg:py-48 overflow-hidden ">
-      {/* Dramatic Background Atmosphere */}
+    <div id="skills" className="relative z-50 py-24 lg:py-48 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-red-600/10 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-red-950/10 blur-[120px] rounded-full pointer-events-none" />
 
@@ -66,10 +90,7 @@ function Skills() {
           </SectionReveal>
         </div>
 
-        {/* Dual Marquee Display */}
         <div className="flex flex-col gap-6 lg:gap-8 relative">
-          {/* Gradient Masks */}
-
           <SectionReveal direction="right" delay={0.2}>
             <Marquee speed={40} gradient={false} pauseOnHover={true}>
               {firstHalf.map((skill, index) => (
@@ -79,12 +100,7 @@ function Skills() {
           </SectionReveal>
 
           <SectionReveal direction="left" delay={0.4}>
-            <Marquee
-              speed={35}
-              gradient={false}
-              pauseOnHover={true}
-              direction="right"
-            >
+            <Marquee speed={35} gradient={false} pauseOnHover={true} direction="right">
               {secondHalf.map((skill, index) => (
                 <SkillItem key={`second-${index}`} skill={skill} />
               ))}

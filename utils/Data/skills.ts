@@ -1,9 +1,6 @@
 export const skillsData = [
-  
-  /*
-  COM PROBLEMA DE ICONE
-  "python",
-  "Supabase",
+  // PYTHON & DATA SCIENCE CORE
+  "Python",
   "Django",
   "Flask",
   "Pandas",
@@ -14,32 +11,34 @@ export const skillsData = [
   "TensorFlow",
   "Keras",
   "PyTorch",
+  
+  // BANCO DE DADOS
+  "SQLite",
+  "PostgreSQL",
+  "MongoDB",
+  "MySQL",
+  "Supabase",
+  "Firebase",
+  
+  // DEVOPS & CLOUD
   "Docker",
   "AWS",
   "Azure",
   "Google Cloud",
-
-
   "Linux",
-  "Unity",
-  "Sqlite",
-  "PostgreSQL",
-  "Java",
-  */
-
-  /*
-  DAO CERTO
+  
+  // WEB (se precisar no futuro)
+  
   "HTML",
   "CSS",
-  "Javascript",
-  "MongoDB",
-  "MySQL",
-  "Firebase",
-  "Git",
+  "JavaScript",
+  /*
+  "React",
+  "Node.js",
   */
-
-
   
-
-  
+  // OUTROS
+  "Git",
+  "Java",
+  "Unity",
 ];
