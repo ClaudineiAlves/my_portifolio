@@ -3,7 +3,7 @@
 import { personalData } from "@/../utils/Data/PersonalData";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Link as ScrollLink } from "react-scroll";
 
 const Footer = () => (

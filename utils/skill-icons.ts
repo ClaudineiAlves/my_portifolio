@@ -18,6 +18,7 @@ import {
   SiAdobeillustrator,
   SiAdobephotoshop,
   SiFreelancer,
+  SiSupabase
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -71,6 +72,8 @@ export const getSkillIcon = (skill: string): IconType => {
       return SiAdobeillustrator;
     case "photoshop":
       return SiAdobephotoshop;
+    case "supabase":
+      return SiSupabase;
     default:
       return SiFreelancer; // Fallback icon
   }

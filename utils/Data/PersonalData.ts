@@ -27,5 +27,4 @@ export const personalData = {
   devUsername: "AlvesReis",
   leetcode: "",
   resume:"",
-   /*"https://drive.google.com/file/d/1TmtDCIlCaZJ4b0npzjwsdDtxiOWwye23/view?usp=drive_link",*/
 };
