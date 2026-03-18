@@ -4,6 +4,7 @@ import Contact from "./components/contact/index";
 import HeroSection from "./components/hero-section/page";
 import Projects from "./components/projects/index";
 import Skills from "./components/skills/page";
+import Certificates from "./components/certificates/page"; 
 import SectionReveal from "./components/SectionReveal";
 
 import "./css/card.css";
@@ -37,6 +38,10 @@ export default function Home() {
 
         <SectionReveal>
           <Projects />
+        </SectionReveal>
+        
+        <SectionReveal>
+          <Certificates />
         </SectionReveal>
 
         <SectionReveal>

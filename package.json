@@ -1,5 +1,5 @@
 {
-  "name": "abdul-basit-portfolio",
+  "name": "claudinei-alves-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -22,6 +22,7 @@
     "clsx": "^2.1.1",
     "emailjs": "^4.0.3",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.38.0",
     "gsap": "^3.13.0",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.473.0",
