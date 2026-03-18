@@ -21,9 +21,9 @@ const Footer = () => (
             />
           </Link>
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-            Desenvolvedor especializado em Ciência de Dados e Inteligência Artificial, 
-            dedicado à criação de soluções digitais inteligentes e de alto desempenho
-            por meio de tecnologias modernas.
+            Desenvolvedor especializado em Ciência de Dados e Inteligência
+            Artificial, dedicado à criação de soluções digitais inteligentes e
+            de alto desempenho por meio de tecnologias modernas.
           </p>
         </div>
 
@@ -39,8 +39,8 @@ const Footer = () => (
               { label: "Experiência", to: "experience" },
               { label: "Skills", to: "skills" },
               { label: "Projetos", to: "projects" },
+              { label: "Certificados", to: "certificates" },
               { label: "Contato", to: "contact" },
-
             ].map((item) => (
               <li key={item.to}>
                 <ScrollLink
@@ -60,7 +60,7 @@ const Footer = () => (
         <div className="flex flex-col gap-6">
           <div>
             <h3 className="text-white font-bold uppercase tracking-widest text-xs mb-6 opacity-50">
-              Conecte-se comigo 
+              Conecte-se comigo
             </h3>
             <div className="flex flex-col gap-3">
               <a
@@ -107,7 +107,8 @@ const Footer = () => (
       {/* Divider & Copyright */}
       <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
         <p>
-          &copy; {new Date().getFullYear()} Claudinei Alves. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} Claudinei Alves. Todos os direitos
+          reservados.
         </p>
         <p className="flex items-center gap-2">
           Feito com <span className="text-red-600 animate-pulse">❤️</span> no
