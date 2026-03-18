@@ -4,7 +4,7 @@
 import SectionReveal from "../SectionReveal";
 import CertificateCarousel from "./CertificateCarousel";
 import { certificates } from "./data";
-import { Award, Sparkles } from "lucide-react";
+import { Award} from "lucide-react";
 
 export default function Certificates() {
   return (
