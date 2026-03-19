@@ -5,12 +5,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -21,12 +16,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [
@@ -46,12 +41,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -62,12 +52,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [
@@ -87,12 +77,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -103,12 +88,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [
@@ -128,12 +113,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -144,12 +124,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [
@@ -169,12 +149,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -185,12 +160,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [
@@ -210,12 +185,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -226,12 +196,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [
@@ -251,12 +221,7 @@ export const projectsData = [
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
 
-    tools: [
-      "Tecnologia 1",
-      "Tecnologia 2",
-      "Tecnologia 3",
-      "Tecnologia 4",
-    ],
+    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
 
     role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
 
@@ -267,12 +232,12 @@ export const projectsData = [
     date: "AAAA-MM-DD",
 
     images: [
-      "/projects/nome-do-projeto/imagem-1.png",
-      "/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/nome-do-projeto/imagem-1.png",
+      //"/projects/nome-do-projeto/imagem-2.png",
     ],
 
     videos: [
-      "/projects/nome-do-projeto/demo-video.mp4"
+      //"/projects/nome-do-projeto/demo-video.mp4"
     ],
 
     highlights: [

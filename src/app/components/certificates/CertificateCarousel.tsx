@@ -2,7 +2,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import CertificateCard from "./CertificateCard";
 import { Certificate } from "./types";
@@ -15,21 +14,49 @@ export default function CertificateCarousel({
   certificates,
 }: CertificateCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const animationRef = useRef<number>();
 
-  // Duplicar certificados para loop infinito
-  const duplicatedCertificates = [...certificates, ...certificates];
+  // Duplicar certificados para loop infinito visual
+  const displayCertificates = [
+    ...certificates,
+    ...certificates,
+    ...certificates,
+  ];
 
-  const checkScrollability = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
+  // Auto-scroll
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPos = scrollContainer.scrollLeft;
+    const speed = 0.5; // pixels por frame
+
+    const animate = () => {
+      if (!isPaused && !isHovered && scrollContainer) {
+        scrollPos += speed;
+
+        // Reset suave quando chega no final do primeiro set
+        const singleSetWidth = scrollContainer.scrollWidth / 3;
+        if (scrollPos >= singleSetWidth * 2) {
+          scrollPos = singleSetWidth;
+          scrollContainer.scrollLeft = scrollPos;
+        } else {
+          scrollContainer.scrollLeft = scrollPos;
+        }
+      }
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isPaused, isHovered, certificates.length]);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -40,42 +67,6 @@ export default function CertificateCarousel({
       });
     }
   };
-
-  // Auto-scroll infinito
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isPaused && !isHovered && scrollRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        const maxScroll = scrollWidth / 2; // Metade por causa da duplicação
-
-        // Se chegou no meio (fim dos originais), volta pro início suavemente
-        if (scrollLeft >= maxScroll - clientWidth - 50) {
-          scrollRef.current.scrollTo({ left: 0, behavior: "auto" });
-        } else {
-          scrollRef.current.scrollBy({ left: 1, behavior: "auto" });
-        }
-      }
-    }, 30); // Velocidade do scroll
-
-    return () => clearInterval(interval);
-  }, [isPaused, isHovered]);
-
-  // Verificar posição do scroll
-  useEffect(() => {
-    const handleScroll = () => checkScrollability();
-    const currentRef = scrollRef.current;
-
-    if (currentRef) {
-      currentRef.addEventListener("scroll", handleScroll);
-      checkScrollability();
-    }
-
-    return () => {
-      if (currentRef) {
-        currentRef.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []);
 
   return (
     <div
@@ -95,7 +86,7 @@ export default function CertificateCarousel({
       {/* Botão Esquerda */}
       <button
         onClick={() => scroll("left")}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-red-600/90 hover:bg-red-600 text-white shadow-lg transition-all duration-300 -translate-x-1/2 opacity-0 group-hover:opacity-100 ${!canScrollLeft && "hidden"}`}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-red-600/90 hover:bg-red-600 text-white shadow-lg transition-all duration-300 -translate-x-1/2 opacity-0 group-hover:opacity-100"
       >
         <ChevronLeft size={24} />
       </button>
@@ -103,31 +94,29 @@ export default function CertificateCarousel({
       {/* Container do Carrossel */}
       <div
         ref={scrollRef}
-        onScroll={checkScrollability}
         className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth pb-4 px-2"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
       >
-        {duplicatedCertificates.map((certificate, index) => (
-          <motion.div
+        {displayCertificates.map((certificate, index) => (
+          <div
             key={`${certificate.id}-${index}`}
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: (index % certificates.length) * 0.1 }}
-            viewport={{ once: true }}
-            className="flex-shrink-0 w-[320px] md:w-[380px]"
+            className="flex-shrink-0 w-[320px] md:w-[380px] animate-fade-in"
+            style={{
+              animationDelay: `${(index % certificates.length) * 100}ms`,
+            }}
           >
             <CertificateCard certificate={certificate} />
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* Botão Direita */}
       <button
         onClick={() => scroll("right")}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-red-600/90 hover:bg-red-600 text-white shadow-lg transition-all duration-300 translate-x-1/2 opacity-0 group-hover:opacity-100 ${!canScrollRight && "hidden"}`}
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-red-600/90 hover:bg-red-600 text-white shadow-lg transition-all duration-300 translate-x-1/2 opacity-0 group-hover:opacity-100"
       >
         <ChevronRight size={24} />
       </button>

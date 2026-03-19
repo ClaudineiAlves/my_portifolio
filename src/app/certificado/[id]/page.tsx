@@ -16,16 +16,17 @@ import {
 import { Metadata } from "next";
 
 interface CertificatePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // Gerar metadata dinâmica
 export async function generateMetadata({
   params,
 }: CertificatePageProps): Promise<Metadata> {
-  const certificate = certificates.find((c) => c.id === params.id);
+  const { id } = await params;
+  const certificate = certificates.find((c) => c.id === id);
 
   if (!certificate) {
     return {
@@ -46,8 +47,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CertificatePage({ params }: CertificatePageProps) {
-  const certificate = certificates.find((c) => c.id === params.id);
+export default async function CertificatePage({
+  params,
+}: CertificatePageProps) {
+  const { id } = await params;
+  const certificate = certificates.find((c) => c.id === id);
 
   if (!certificate) {
     notFound();

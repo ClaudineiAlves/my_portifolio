@@ -1,7 +1,6 @@
 // src/app/components/certificates/CertificateCard.tsx
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Certificate } from "./types";
@@ -14,12 +13,10 @@ interface CertificateCardProps {
 export default function CertificateCard({ certificate }: CertificateCardProps) {
   return (
     <Link href={`/certificado/${certificate.id}`}>
-      <motion.div
-        whileHover={{ y: -10, scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+      <div
         className="relative group cursor-pointer bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] 
                    border border-[#333] rounded-xl overflow-hidden shadow-lg hover:shadow-red-500/20 
-                   transition-all duration-300 h-full"
+                   transition-all duration-300 h-full hover:-translate-y-2 hover:scale-[1.02]"
       >
         {/* Imagem do Certificado */}
         <div className="relative h-48 w-full overflow-hidden">
@@ -79,7 +76,7 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }
