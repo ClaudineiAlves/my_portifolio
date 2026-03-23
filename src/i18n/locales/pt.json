@@ -2,6 +2,7 @@
   "nav": {
     "about": "Sobre",
     "education": "Formação",
+    "experience": "Experiência",
     "skills": "Skills",
     "projects": "Projetos",
     "certificates": "Certificados",
@@ -9,64 +10,209 @@
   },
   "hero": {
     "welcome": "BEM-VINDO AO MEU PORTFÓLIO",
-    "title": "Desenvolvendo Soluções Digitais",
-    "role": "Desenvolvedor de Dados e Inteligência Artificial",
+    "title_line1": "Desenvolvendo",
+    "title_line2": "Soluções",
+    "title_line3": "Digitais",
+    "intro_prefix": "Sou",
+    "intro_connector": "um",
     "description": "Um profissional focado em Ciência de Dados, Inteligência Artificial e desenvolvimento de aplicações de alto desempenho.",
     "cta_contact": "Entre em Contato",
     "cta_resume": "Baixar Currículo"
   },
+  "personal": {
+    "designation": "Desenvolvedor de Dados e Inteligência Artificial",
+    "description": "Sou Claudinei Alves, desenvolvedor focado em Ciência de Dados, Inteligência Artificial e desenvolvimento de software. Tenho interesse em criar sistemas inteligentes e aplicações orientadas por dados, utilizando principalmente Python, machine learning e tecnologias modernas de desenvolvimento web. Atualmente curso Bacharelado em Ciência de Dados e Inteligência Artificial, onde desenvolvo projetos envolvendo análise de dados, modelos de aprendizado de máquina e soluções tecnológicas para problemas do mundo real. Busco constantemente aprender novas tecnologias e aplicar conhecimento em projetos práticos e inovadores.",
+    "alt_word_1": "Técnico em Informática.",
+    "alt_word_2": "Desenvolvedor Python.",
+    "alt_word_3": "Cientista de Dados.",
+    "alt_word_4": "Engenheiro de IA.",
+    "alt_word_5": "Desenvolvedor de Software.",
+    "alt_word_6": "Inovador em Tecnologia."
+  },
   "about": {
     "section_label": "Apresentação",
-    "title": "Sobre Mim",
-    "bio": "Sou Claudinei Alves, desenvolvedor focado em Ciência de Dados, Inteligência Artificial e desenvolvimento de software. Tenho interesse em criar sistemas inteligentes e aplicações orientadas por dados, utilizando principalmente Python, machine learning e tecnologias modernas de desenvolvimento web.",
+    "title_word1": "Sobre",
+    "title_word2": "Mim",
     "stat_experience": "Experiência",
     "stat_projects": "Projetos Desenvolvidos",
     "stat_technologies": "Tecnologias Dominadas",
     "quote": "Criar é permitir que o invisível se torne eterno na superfície do mundo."
   },
   "education": {
-    "section_label": "Formação Acadêmica",
     "title": "Formação Acadêmica",
-    "subtitle": "Base da Minha Formação",
-    "quote": "A educação é a arma mais poderosa que você pode usar para mudar o mundo. - Nelson Mandela",
-    "present": "Presente"
+    "subtitle_line1": "Base da",
+    "subtitle_line2": "Minha Formação",
+    "quote": "\"A educação é a arma mais poderosa que você pode usar para mudar o mundo.\" - Nelson Mandela",
+    "items": {
+      "1": {
+        "title": "Bacharelado em Ciência de Dados e Inteligência Artificial",
+        "duration": "Fev 2026 - Presente",
+        "desc_1": "Graduação focada em análise de dados, aprendizado de máquina e desenvolvimento de sistemas inteligentes.",
+        "desc_2": "Formação interdisciplinar que integra computação, estatística e inteligência artificial para resolver problemas complexos baseados em dados.",
+        "detail_1": "Programação para análise de dados (Python e ferramentas de ciência de dados)",
+        "detail_2": "Machine Learning e Inteligência Artificial",
+        "detail_3": "Estatística, probabilidade e análise de dados",
+        "detail_4": "Banco de dados relacionais e não relacionais",
+        "detail_5": "Mineração e visualização de dados",
+        "detail_6": "Big Data e processamento de grandes volumes de dados",
+        "detail_7": "Desenvolvimento de software e aplicações web",
+        "detail_8": "Segurança, privacidade e ética no uso de dados",
+        "detail_9": "Projetos práticos com dados reais e integração com o mercado"
+      },
+      "2": {
+        "title": "Formação Técnica em Tecnologia da Informação",
+        "duration": "Fev 2024 - Dez 2025",
+        "desc_1": "Curso técnico focado no desenvolvimento de software, lógica de programação e fundamentos de computação.",
+        "desc_2": "Formação voltada para preparação profissional em tecnologia, com atividades práticas, projetos e desenvolvimento de sistemas.",
+        "detail_1": "Lógica de programação e algoritmos",
+        "detail_2": "Desenvolvimento de programas e aplicações computacionais",
+        "detail_3": "Fundamentos de desenvolvimento de software",
+        "detail_4": "Uso de diferentes sistemas operacionais e ambientes de desenvolvimento",
+        "detail_5": "Banco de dados e manipulação de dados",
+        "detail_6": "Suporte, configuração e manutenção de sistemas computacionais",
+        "detail_7": "Projetos práticos e Trabalho de Conclusão de Curso (TCC)",
+        "detail_8": "Desenvolvimento de habilidades profissionais e trabalho em equipe"
+      }
+    }
   },
   "skills": {
     "section_label": "Tecnologias",
-    "title": "Minhas Tecnologias"
+    "title_word1": "Minhas",
+    "title_word2": "Tecnologias",
+    "technology_label": "Tecnologia"
   },
   "projects": {
+    "heading": "Projetos em Destaque",
     "section_label": "Portfólio",
-    "title": "Principais Projetos",
+    "title_word1": "Principais",
+    "title_word2": "Projetos",
     "subtitle": "Uma seleção de soluções digitais de alto impacto, desenvolvidas com foco em escalabilidade e desempenho.",
     "demo": "Demonstração",
     "code": "Código",
-    "view_all": "Ver Todos os Projetos"
+    "view_all": "Ver Todos os Projetos",
+    "items": {
+      "1": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "2": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "3": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "4": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "5": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "6": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "7": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      }
+    }
   },
   "certificates": {
     "section_label": "Qualificações",
-    "title": "Meus Certificados",
+    "title_word1": "Meus",
+    "title_word2": "Certificados",
     "subtitle": "Certificações e cursos que comprovam minha expertise contínua em tecnologia e ciência de dados.",
     "stat_certifications": "Certificações",
     "stat_hours": "Horas de estudo",
     "stat_technologies": "Tecnologias",
-    "completed_in": "Concluído em"
+    "completed_in": "Concluído em",
+    "items": {
+      "1": {
+        "title": "Fundamentos de Linguagem Python para Análise de Dados e IA",
+        "institution": "Data Science Academy",
+        "description": "Curso completo de Python abordando desde conceitos básicos até aplicações em análise de dados, machine learning e inteligência artificial."
+      },
+      "2": {
+        "title": "Data Science Foundations",
+        "institution": "IBM SkillsBuild",
+        "description": "Formação em fundamentos de ciência de dados, incluindo análise de dados, pensamento analítico, visualização e conceitos introdutórios de IA."
+      },
+      "3": {
+        "title": "Machine Learning Specialization",
+        "institution": "Coursera",
+        "description": "Especialização em Machine Learning cobrindo algoritmos supervisionados e não supervisionados, redes neurais e melhores práticas em IA."
+      }
+    }
   },
   "contact": {
     "section_label": "Comunicação",
-    "title": "Vamos Conversar",
+    "title_word1": "Vamos",
+    "title_word2": "Conversar",
     "subtitle": "Tem um projeto em mente ou apenas quer dizer olá? Estou sempre aberto a discutir novas oportunidades e ideias criativas.",
     "form_title": "Enviar Mensagem",
     "form_response_time": "Responderei sua mensagem em até 24 horas.",
     "name_label": "Seu Nome",
     "email_label": "Seu Email",
     "message_label": "Sua Mensagem",
+    "message_placeholder": "Conte-me sobre seu projeto...",
     "submit": "Enviar Mensagem",
     "direct_title": "Contato Direto",
     "social_title": "Redes Sociais",
-    "location_label": "Localização"
+    "phone_label": "Telefone",
+    "location_label": "Localização",
+    "error_invalid_email": "Por favor, insira um endereço de email válido.",
+    "error_required": "Ops! Parece que alguns campos ainda estão vazios.",
+    "toast_success": "Mensagem enviada com sucesso!",
+    "toast_error": "Ocorreu um erro inesperado."
   },
   "footer": {
+    "description": "Desenvolvedor especializado em Ciência de Dados e Inteligência Artificial, dedicado à criação de soluções digitais inteligentes e de alto desempenho por meio de tecnologias modernas.",
     "nav_title": "Navegação",
     "connect_title": "Conecte-se comigo",
     "rights": "Todos os direitos reservados.",

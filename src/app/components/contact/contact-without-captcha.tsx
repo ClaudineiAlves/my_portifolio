@@ -6,17 +6,13 @@ import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
 import { isValidEmail } from "@/../utils/check-email";
 import { User, Mail, MessageSquare } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactWithoutCaptcha = () => {
-  const [input, setInput] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [error, setError] = useState({
-    email: false,
-    required: false,
-  });
+  const { t } = useLanguage();
+
+  const [input, setInput] = useState({ name: "", email: "", message: "" });
+  const [error, setError] = useState({ email: false, required: false });
   const [isLoading, setIsLoading] = useState(false);
 
   const checkRequired = () => {
@@ -27,6 +23,7 @@ const ContactWithoutCaptcha = () => {
 
   const handleSendMail = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     if (!input.email || !input.message || !input.name) {
       setError({ ...error, required: true });
       return;
@@ -58,20 +55,16 @@ const ContactWithoutCaptcha = () => {
       );
 
       if (res.status === 200) {
-        toast.success("Mensagem enviada com sucesso!");
+        toast.success(t("contact.toast_success"));
         setIsLoading(false);
-        setInput({
-          name: "",
-          email: "",
-          message: "",
-        });
+        setInput({ name: "", email: "", message: "" });
       }
     } catch (error: unknown) {
       setIsLoading(false);
       if (error instanceof Error) {
         toast.error(error.message);
       } else {
-        toast.error("Ocorreu um erro inesperado.");
+        toast.error(t("contact.toast_error"));
       }
     }
   };
@@ -81,10 +74,10 @@ const ContactWithoutCaptcha = () => {
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl font-bold text-white tracking-tight">
-            Enviar Mensagem
+            {t("contact.form_title")}
           </h3>
           <p className="text-slate-400 text-sm">
-            Responderei sua mensagem em até 24 horas.
+            {t("contact.form_response_time")}
           </p>
         </div>
 
@@ -93,7 +86,7 @@ const ContactWithoutCaptcha = () => {
           <div className="flex flex-col gap-2 group/input">
             <label className="text-sm font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2 group-focus-within/input:text-red-500 transition-colors">
               <User className="w-4 h-4" />
-              Seu Nome
+              {t("contact.name_label")}
             </label>
             <input
               className="bg-white/5 w-full border border-white/10 rounded-2xl focus:border-red-500/50 focus:bg-white/10 ring-0 outline-0 transition-all duration-300 px-5 py-4 text-white placeholder:text-slate-600"
@@ -111,10 +104,14 @@ const ContactWithoutCaptcha = () => {
           <div className="flex flex-col gap-2 group/input">
             <label className="text-sm font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2 group-focus-within/input:text-red-500 transition-colors">
               <Mail className="w-4 h-4" />
-              Seu Email
+              {t("contact.email_label")}
             </label>
             <input
-              className={`bg-white/5 w-full border rounded-2xl focus:bg-white/10 ring-0 outline-0 transition-all duration-300 px-5 py-4 text-white placeholder:text-slate-600 ${error.email ? "border-red-500/50" : "border-white/10 focus:border-red-500/50"}`}
+              className={`bg-white/5 w-full border rounded-2xl focus:bg-white/10 ring-0 outline-0 transition-all duration-300 px-5 py-4 text-white placeholder:text-slate-600 ${
+                error.email
+                  ? "border-red-500/50"
+                  : "border-white/10 focus:border-red-500/50"
+              }`}
               type="email"
               placeholder="caioocean@example.com"
               maxLength={100}
@@ -128,7 +125,7 @@ const ContactWithoutCaptcha = () => {
             />
             {error.email && (
               <p className="text-xs text-red-500 ml-1">
-                Por favor, insira um endereço de email válido.
+                {t("contact.error_invalid_email")}
               </p>
             )}
           </div>
@@ -137,11 +134,11 @@ const ContactWithoutCaptcha = () => {
           <div className="flex flex-col gap-2 group/input">
             <label className="text-sm font-bold text-slate-500 uppercase tracking-widest ml-1 flex items-center gap-2 group-focus-within/input:text-red-500 transition-colors">
               <MessageSquare className="w-4 h-4" />
-              Sua Mensagem
+              {t("contact.message_label")}
             </label>
             <textarea
               className="bg-white/5 w-full border border-white/10 rounded-2xl focus:border-red-500/50 focus:bg-white/10 ring-0 outline-0 transition-all duration-300 px-5 py-4 text-white placeholder:text-slate-600 resize-none"
-              placeholder="Conte-me sobre seu projeto..."
+              placeholder={t("contact.message_placeholder")}
               maxLength={500}
               name="message"
               required={true}
@@ -155,7 +152,7 @@ const ContactWithoutCaptcha = () => {
           <div className="flex flex-col gap-4 mt-2">
             {error.required && (
               <p className="text-sm text-red-500 text-center font-medium">
-                Ops! Parece que alguns campos ainda estão vazios.
+                {t("contact.error_required")}
               </p>
             )}
 
@@ -169,7 +166,7 @@ const ContactWithoutCaptcha = () => {
                   <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
                 ) : (
                   <>
-                    Enviar Mensagem
+                    {t("contact.submit")}
                     <TbMailForward className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                   </>
                 )}

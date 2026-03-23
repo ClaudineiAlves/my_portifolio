@@ -1,5 +1,7 @@
 "use client";
+
 import { personalData } from "@/../utils/Data/PersonalData";
+import { usePersonalData } from "@/hooks/useTranslatedData";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/dist/SplitText";
@@ -9,8 +11,12 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import Tilt from "react-parallax-tilt";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+  const { designation, designationAlternateWords } = usePersonalData();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const designationRef = useRef<HTMLElement>(null);
   const codeCardRef = useRef<HTMLDivElement>(null);
@@ -19,10 +25,9 @@ const HeroSection = () => {
     () => {
       gsap.registerPlugin(SplitText);
 
-      const titles = personalData.designationAlternateWords;
+      const titles = designationAlternateWords;
       let index = 0;
 
-      // Initial Intro Animation
       const introTl = gsap.timeline();
       introTl
         .fromTo(
@@ -49,7 +54,6 @@ const HeroSection = () => {
           "-=1",
         );
 
-      // Designation Rotation Animation
       const runDesignationAnimation = () => {
         const el = designationRef.current;
         if (!el) return;
@@ -85,7 +89,6 @@ const HeroSection = () => {
 
       runDesignationAnimation();
 
-      // Floating animation for social icons
       gsap.to(".social-icon", {
         y: -5,
         duration: 2,
@@ -103,40 +106,39 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative min-h-[90vh] flex flex-col items-center justify-center py-12 lg:py-24 overflow-hidden"
     >
-      {/* Background Ambient Glows */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-red-600/10 blur-[120px] rounded-full animate-pulse" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-900/10 blur-[150px] rounded-full animate-pulse delay-700" />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center px-4 md:px-8 relative z-10 w-full max-w-7xl mx-auto">
-        {/* Left Side: Content */}
         <div className="order-2 lg:order-1 flex flex-col items-start gap-8">
           <div className="flex flex-col gap-4">
             <span className="hero-tag px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold tracking-[0.3em] w-fit">
-              BEM-VINDO AO MEU PORTFÓLIO
+              {t("hero.welcome")}
             </span>
+
             <h1 className="hero-heading text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
-              Desenvolvendo{" "}
+              {t("hero.title_line1")}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
-                Soluções 
+                {t("hero.title_line2")}
               </span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-950">
-                Digitais
+                {t("hero.title_line3")}
               </span>
             </h1>
+
             <p className="hero-heading text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-medium">
-              Sou {" "}
-              <span className="text-white font-bold">{personalData.name}</span>,
-              um 
+              {t("hero.intro_prefix")}{" "}
+              <span className="text-white font-bold">{personalData.name}</span>,{" "}
+              {t("hero.intro_connector")}
               <span
                 className="text-red-500 ml-2 font-bold inline-block min-w-[200px]"
                 ref={designationRef}
               >
-                {personalData.designation}
+                {designation}
               </span>
               <br />
-              Um profissional focado em Ciência de Dados, Inteligência Artificial e
-              desenvolvimento de aplicações de alto desempenho.
+              {t("hero.description")}
             </p>
           </div>
 
@@ -156,8 +158,6 @@ const HeroSection = () => {
               >
                 <BsLinkedin size={24} />
               </Link>
-              
-              
             </div>
 
             <div className="hero-cta flex flex-wrap gap-4">
@@ -167,23 +167,22 @@ const HeroSection = () => {
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative flex items-center gap-2">
-                  Entre em Contato <RiContactsFill />
+                  {t("hero.cta_contact")} <RiContactsFill />
                 </span>
               </Link>
-
               <Link
                 href={personalData.resume}
                 target="_blank"
                 className="group px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
               >
-                Baixar Currículo{" "}
+                {t("hero.cta_resume")}{" "}
                 <MdDownload className="group-hover:translate-y-1 transition-transform" />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Right Side: Animated Code Card */}
+        {/* Code Card — conteúdo estático intencional (é código Python decorativo) */}
         <div className="order-1 lg:order-2 flex justify-center">
           <Tilt
             perspective={1000}
@@ -196,7 +195,6 @@ const HeroSection = () => {
               ref={codeCardRef}
               className="relative rounded-3xl border border-white/10 bg-[#050505]/80 backdrop-blur-xl overflow-hidden shadow-2xl group"
             >
-              {/* Card Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/5">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -208,7 +206,6 @@ const HeroSection = () => {
                   developer.py
                 </div>
               </div>
-
               <div className="p-6 lg:p-10">
                 <code className="font-mono text-xs md:text-sm lg:text-base leading-relaxed">
                   <div className="flex gap-4">
@@ -267,7 +264,9 @@ const HeroSection = () => {
                     <p className="ml-8">
                       <span className="text-red-300">self</span>
                       <span className="text-white">.area = </span>
-                      <span className="text-green-400">"Data Science & AI"</span>
+                      <span className="text-green-400">
+                        "Data Science & AI"
+                      </span>
                     </p>
                   </div>
                   <div className="flex gap-4">
@@ -290,7 +289,8 @@ const HeroSection = () => {
                   <div className="flex gap-4">
                     <span className="text-slate-600 italic">12</span>
                     <p className="ml-12">
-                      <span className="text-green-400">"Machine Learning"</span>,
+                      <span className="text-green-400">"Machine Learning"</span>
+                      ,
                     </p>
                   </div>
                   <div className="flex gap-4">
@@ -329,7 +329,9 @@ const HeroSection = () => {
                     <span className="text-slate-600 italic">18</span>
                     <p className="ml-8">
                       <span className="text-red-500">return</span>{" "}
-                      <span className="text-green-400">"Intelligent Solutions"</span>
+                      <span className="text-green-400">
+                        "Intelligent Solutions"
+                      </span>
                     </p>
                   </div>
                 </code>

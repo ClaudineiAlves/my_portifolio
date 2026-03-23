@@ -2,6 +2,7 @@
   "nav": {
     "about": "About",
     "education": "Education",
+    "experience": "Experience",
     "skills": "Skills",
     "projects": "Projects",
     "certificates": "Certificates",
@@ -9,64 +10,209 @@
   },
   "hero": {
     "welcome": "WELCOME TO MY PORTFOLIO",
-    "title": "Building Digital Solutions",
-    "role": "Data & Artificial Intelligence Developer",
+    "title_line1": "Building",
+    "title_line2": "Digital",
+    "title_line3": "Solutions",
+    "intro_prefix": "I'm",
+    "intro_connector": "a",
     "description": "A professional focused on Data Science, Artificial Intelligence, and high-performance application development.",
     "cta_contact": "Get In Touch",
     "cta_resume": "Download Resume"
   },
+  "personal": {
+    "designation": "Data & Artificial Intelligence Developer",
+    "description": "I'm Claudinei Alves, a developer focused on Data Science, Artificial Intelligence, and software development. I'm passionate about building intelligent systems and data-driven applications, using primarily Python, machine learning, and modern web development technologies. I'm currently pursuing a Bachelor's degree in Data Science and Artificial Intelligence, where I develop projects involving data analysis, machine learning models, and technological solutions for real-world problems. I constantly seek to learn new technologies and apply knowledge in practical and innovative projects.",
+    "alt_word_1": "IT Technician.",
+    "alt_word_2": "Python Developer.",
+    "alt_word_3": "Data Scientist.",
+    "alt_word_4": "AI Engineer.",
+    "alt_word_5": "Software Developer.",
+    "alt_word_6": "Technology Innovator."
+  },
   "about": {
     "section_label": "Introduction",
-    "title": "About Me",
-    "bio": "I'm Claudinei Alves, a developer focused on Data Science, Artificial Intelligence, and software development. I'm passionate about building intelligent systems and data-driven applications, using primarily Python, machine learning, and modern web development technologies. I'm currently pursuing a Bachelor's degree in Data Science and Artificial Intelligence, where I develop projects involving data analysis, machine learning models, and technological solutions for real-world problems. I constantly seek to learn new technologies and apply knowledge in practical and innovative projects.",
+    "title_word1": "About",
+    "title_word2": "Me",
     "stat_experience": "Experience",
     "stat_projects": "Projects Developed",
     "stat_technologies": "Technologies Mastered",
     "quote": "To create is to allow the invisible to become eternal on the surface of the world."
   },
   "education": {
-    "section_label": "Academic Background",
     "title": "Academic Background",
-    "subtitle": "The Foundation of My Education",
-    "quote": "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
-    "present": "Present"
+    "subtitle_line1": "Foundation of",
+    "subtitle_line2": "My Education",
+    "quote": "\"Education is the most powerful weapon which you can use to change the world.\" - Nelson Mandela",
+    "items": {
+      "1": {
+        "title": "Bachelor's Degree in Data Science and Artificial Intelligence",
+        "duration": "Feb 2026 - Present",
+        "desc_1": "Undergraduate program focused on data analysis, machine learning, and the development of intelligent systems.",
+        "desc_2": "Interdisciplinary curriculum integrating computer science, statistics, and artificial intelligence to solve complex data-driven problems.",
+        "detail_1": "Programming for data analysis (Python and data science tools)",
+        "detail_2": "Machine Learning and Artificial Intelligence",
+        "detail_3": "Statistics, probability, and data analysis",
+        "detail_4": "Relational and non-relational databases",
+        "detail_5": "Data mining and visualization",
+        "detail_6": "Big Data and large-scale data processing",
+        "detail_7": "Software development and web applications",
+        "detail_8": "Security, privacy, and data ethics",
+        "detail_9": "Practical projects with real data and industry integration"
+      },
+      "2": {
+        "title": "Technical Degree in Information Technology",
+        "duration": "Feb 2024 - Dec 2025",
+        "desc_1": "Technical program focused on software development, programming logic, and fundamentals of computing.",
+        "desc_2": "Professionally oriented curriculum with hands-on activities, projects, and systems development.",
+        "detail_1": "Programming logic and algorithms",
+        "detail_2": "Development of programs and computational applications",
+        "detail_3": "Fundamentals of software development",
+        "detail_4": "Use of different operating systems and development environments",
+        "detail_5": "Databases and data manipulation",
+        "detail_6": "System support, configuration, and maintenance",
+        "detail_7": "Practical projects and Final Course Project (TCC)",
+        "detail_8": "Professional skills development and teamwork"
+      }
+    }
   },
   "skills": {
     "section_label": "Technologies",
-    "title": "My Technologies"
+    "title_word1": "My",
+    "title_word2": "Technologies",
+    "technology_label": "Technology"
   },
   "projects": {
+    "heading": "Featured Projects",
     "section_label": "Portfolio",
-    "title": "Featured Projects",
+    "title_word1": "Featured",
+    "title_word2": "Projects",
     "subtitle": "A selection of high-impact digital solutions, developed with a focus on scalability and performance.",
     "demo": "Live Demo",
     "code": "Source Code",
-    "view_all": "View All Projects"
+    "view_all": "View All Projects",
+    "items": {
+      "1": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      },
+      "2": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      },
+      "3": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      },
+      "4": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      },
+      "5": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      },
+      "6": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      },
+      "7": {
+        "name": "Project Name",
+        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
+        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
+        "highlight_1": "An important feature or characteristic of the project.",
+        "highlight_2": "Another relevant implementation highlight.",
+        "highlight_3": "An interesting technology or architecture used.",
+        "challenge_1": "Main technical challenge faced during development.",
+        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+      }
+    }
   },
   "certificates": {
     "section_label": "Qualifications",
-    "title": "My Certificates",
+    "title_word1": "My",
+    "title_word2": "Certificates",
     "subtitle": "Certifications and courses that prove my continuous expertise in technology and data science.",
     "stat_certifications": "Certifications",
     "stat_hours": "Study Hours",
     "stat_technologies": "Technologies",
-    "completed_in": "Completed in"
+    "completed_in": "Completed in",
+    "items": {
+      "1": {
+        "title": "Python Language Fundamentals for Data Analysis and AI",
+        "institution": "Data Science Academy",
+        "description": "Comprehensive Python course covering fundamentals through applications in data analysis, machine learning, and artificial intelligence."
+      },
+      "2": {
+        "title": "Data Science Foundations",
+        "institution": "IBM SkillsBuild",
+        "description": "Foundational training in data science including data analysis, analytical thinking, visualization, and introductory AI concepts."
+      },
+      "3": {
+        "title": "Machine Learning Specialization",
+        "institution": "Coursera",
+        "description": "Machine Learning specialization covering supervised and unsupervised algorithms, neural networks, and AI best practices."
+      }
+    }
   },
   "contact": {
     "section_label": "Communication",
-    "title": "Let's Talk",
+    "title_word1": "Let's",
+    "title_word2": "Talk",
     "subtitle": "Have a project in mind or just want to say hello? I'm always open to discussing new opportunities and creative ideas.",
     "form_title": "Send a Message",
     "form_response_time": "I'll respond to your message within 24 hours.",
     "name_label": "Your Name",
     "email_label": "Your Email",
     "message_label": "Your Message",
+    "message_placeholder": "Tell me about your project...",
     "submit": "Send Message",
     "direct_title": "Direct Contact",
     "social_title": "Social Media",
-    "location_label": "Location"
+    "phone_label": "Phone",
+    "location_label": "Location",
+    "error_invalid_email": "Please enter a valid email address.",
+    "error_required": "Oops! Some fields are still empty.",
+    "toast_success": "Message sent successfully!",
+    "toast_error": "An unexpected error occurred."
   },
   "footer": {
+    "description": "Developer specialized in Data Science and Artificial Intelligence, dedicated to building intelligent, high-performance digital solutions using modern technologies.",
     "nav_title": "Navigation",
     "connect_title": "Connect With Me",
     "rights": "All rights reserved.",

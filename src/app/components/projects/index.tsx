@@ -1,24 +1,28 @@
 "use client";
-import { projectsData } from "@/../utils/Data/projects-data";
+
+import { useProjects } from "@/hooks/useTranslatedData";
 import { MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import ProjectCard from "./project-card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Projects = () => {
+  const { t } = useLanguage();
+  const projectsData = useProjects(); // dados já traduzidos
   const displayedProjects = projectsData.slice(0, 3);
+
   return (
     <section
       id="projects"
-      className="relative z-50 py-16 lg:py-32  overflow-hidden"
+      className="relative z-50 py-16 lg:py-32 overflow-hidden"
     >
-      {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-red-600/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="flex justify-center mb-20 lg:mb-32">
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-gradient-to-r from-transparent to-red-600"></span>
           <span className="bg-[#050505] border border-red-600/30 w-fit text-white p-3 px-8 text-2xl font-bold rounded-full shadow-[0_0_20px_rgba(220,38,38,0.2)]">
-            Projetos em Destaque
+            {t("projects.heading")}
           </span>
           <span className="w-24 h-[2px] bg-gradient-to-l from-transparent to-red-600"></span>
         </div>
@@ -28,17 +32,16 @@ const Projects = () => {
         <div className="flex flex-col items-center gap-12 lg:gap-20">
           <div className="text-center">
             <p className="text-red-500 text-sm font-bold uppercase tracking-[0.4em] mb-4">
-              Portfólio
+              {t("projects.section_label")}
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter">
-              Principais{" "}
+              {t("projects.title_word1")}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
-                Principais
+                {t("projects.title_word2")}
               </span>
             </h2>
             <p className="mt-6 max-w-2xl text-slate-400 text-lg leading-relaxed font-medium mx-auto">
-              Uma seleção de soluções digitais de alto impacto, desenvolvidas com foco
-              em escalabilidade, desempenho.
+              {t("projects.subtitle")}
             </p>
           </div>
 
@@ -52,7 +55,7 @@ const Projects = () => {
             <button className="relative px-10 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-red-900 text-white font-bold uppercase tracking-widest text-sm transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(220,38,38,0.3)] flex items-center gap-2 overflow-hidden">
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               <span className="relative flex items-center gap-2">
-                Ver Todos os Projetos <MoveUpRight className="w-4 h-4" />
+                {t("projects.view_all")} <MoveUpRight className="w-4 h-4" />
               </span>
             </button>
           </Link>

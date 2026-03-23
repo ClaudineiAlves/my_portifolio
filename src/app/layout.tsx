@@ -19,6 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://claudineiportifolio.vercel.app"),
   title: "Claudinei Alves | AI Engineer & Data Scientist",
   description:
     "Portfolio de Claudinei Alves — Desenvolvedor focado em Inteligência Artificial, Ciência de Dados e Engenharia de Software. Projetos com Python, Machine Learning, Next.js, React e análise de dados aplicada a problemas reais.",

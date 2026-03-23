@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
@@ -7,6 +8,7 @@ import { personalData } from "@/../utils/Data/PersonalData";
 import ContactWithoutCaptcha from "./contact-without-captcha";
 import SectionReveal from "../SectionReveal";
 import { MapPin, Send, MessageSquare } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ContactLinkProps {
   href: string;
@@ -29,7 +31,7 @@ const ContactInfoCard = ({
     className="group relative flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300 shadow-xl"
   >
     <div
-      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300`}
+      className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300"
       style={{ backgroundColor: `${color}15` }}
     >
       <Icon
@@ -45,7 +47,6 @@ const ContactInfoCard = ({
         {value}
       </span>
     </div>
-
     {/* Hover Glow */}
     <div
       className="absolute inset-0 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 pointer-events-none blur-xl"
@@ -55,6 +56,8 @@ const ContactInfoCard = ({
 );
 
 function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <div id="contact" className="relative z-50 py-24 lg:py-48 overflow-hidden">
       {/* Background Decorative Elements */}
@@ -68,18 +71,19 @@ function ContactSection() {
                 <MessageSquare className="w-5 h-5 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
               </div>
               <span className="text-sm font-bold uppercase tracking-[0.3em]">
-                Comunicação
+                {t("contact.section_label")}
               </span>
             </div>
+
             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight text-center">
-              Vamos{" "}
+              {t("contact.title_word1")}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
-                Conversar
+                {t("contact.title_word2")}
               </span>
             </h2>
+
             <p className="text-slate-400 text-lg max-w-2xl text-center">
-              Tem um projeto em mente ou apenas quer dizer olá? Estou sempre aberto
-              a discutir novas oportunidades e ideias criativas.
+              {t("contact.subtitle")}
             </p>
           </div>
         </SectionReveal>
@@ -98,7 +102,7 @@ function ContactSection() {
               <div className="flex flex-col gap-6">
                 <h3 className="text-xl font-bold text-white flex items-center gap-3">
                   <Send className="w-5 h-5 text-red-600" />
-                  Contato Direto
+                  {t("contact.direct_title")}
                 </h3>
                 <div className="flex flex-col gap-4">
                   <ContactInfoCard
@@ -111,14 +115,14 @@ function ContactSection() {
                   <ContactInfoCard
                     href={`tel:${personalData.phone}`}
                     icon={IoMdCall}
-                    label="Telefone"
+                    label={t("contact.phone_label")}
                     value={personalData.phone}
                     color="#dc2626"
                   />
                   <ContactInfoCard
                     href="#"
                     icon={MapPin}
-                    label="Localização"
+                    label={t("contact.location_label")}
                     value={personalData.address}
                     color="#991b1b"
                   />
@@ -129,7 +133,7 @@ function ContactSection() {
             <SectionReveal direction="left" delay={0.2}>
               <div className="flex flex-col gap-6">
                 <h3 className="text-xl font-bold text-white">
-                  Redes Sociais
+                  {t("contact.social_title")}
                 </h3>
                 <div className="flex flex-wrap gap-4">
                   {[
