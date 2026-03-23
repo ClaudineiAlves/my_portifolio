@@ -1,41 +1,73 @@
 "use client";
+
 import img from "@/../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { type Locale, localeNames } from "@/i18n";
 
-const navItems = [
-  { label: "Sobre", to: "about" },
-  { label: "Formação", to: "education" },
-  /*{ label: "Experience", to: "experience" },*/
-  { label: "Skills", to: "skills" },
-  { label: "Projetos", to: "projects" },
-  { label: "Certificados", to: "certificates" },
-  { label: "Contato", to: "contact" },
+// Flags para cada idioma suportado
+const flags: Record<Locale, string> = {
+  en: "🇺🇸",
+  pt: "🇧🇷",
+};
+
+// Chaves de tradução para cada item da navbar (alinhado com en.json / pt.json)
+const navItemKeys = [
+  { key: "nav.about", to: "about" },
+  { key: "nav.education", to: "education" },
+  // { key: "nav.experience", to: "experience" },
+  { key: "nav.skills", to: "skills" },
+  { key: "nav.projects", to: "projects" },
+  { key: "nav.certificates", to: "certificates" },
+  { key: "nav.contact", to: "contact" },
 ];
 
+// ─── Language Toggle ──────────────────────────────────────────────────────────
+function LanguageToggle() {
+  const { locale, setLocale } = useLanguage();
+
+  const toggle = () => setLocale(locale === "en" ? "pt" : "en");
+
+  return (
+    <button
+      onClick={toggle}
+      aria-label={`Switch to ${locale === "en" ? "Português" : "English"}`}
+      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20
+                 bg-white/10 hover:bg-white/20 transition-all duration-300 text-sm font-medium
+                 text-slate-300 hover:text-white select-none"
+    >
+      <span>{flags[locale]}</span>
+      <span className="hidden sm:inline">{localeNames[locale]}</span>
+    </button>
+  );
+}
+
+// ─── Navbar ───────────────────────────────────────────────────────────────────
 const Navbar = () => {
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (
-    item: { label: string; to: string },
-    isMobile = false,
-  ) => {
+  // Fecha o menu mobile ao trocar de rota
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  const renderLink = (item: { key: string; to: string }, isMobile = false) => {
+    const label = t(item.key);
     const isHomePage = pathname === "/";
 
-    // Shared classes for both desktop and mobile
     const baseClasses = isMobile
       ? "block cursor-pointer py-3 text-lg font-semibold transition-all duration-300 border-b border-white/5"
       : "cursor-pointer transition-all duration-300 relative group px-2 py-1 text-sm lg:text-base font-medium";
@@ -53,7 +85,7 @@ const Navbar = () => {
           className={`${baseClasses} text-slate-300 hover:text-white`}
           onClick={isMobile ? () => setIsMenuOpen(false) : undefined}
         >
-          {item.label}
+          {label}
           {!isMobile && (
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-900 transition-all duration-300 group-hover:w-full [.text-red-500_&]:w-full" />
           )}
@@ -68,7 +100,7 @@ const Navbar = () => {
         className={`${baseClasses} text-slate-300 hover:text-white`}
         onClick={() => isMobile && setIsMenuOpen(false)}
       >
-        {item.label}
+        {label}
         {!isMobile && (
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-900 transition-all duration-300 group-hover:w-full" />
         )}
@@ -85,13 +117,14 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex items-center justify-between mx-auto px-4 lg:px-8">
+        {/* Logo */}
         <Link
           href="/"
           className="transition-transform duration-300 hover:scale-105"
         >
           <Image
             src={img}
-            alt="Abdul Basit"
+            alt="Claudinei Alves"
             width={isScrolled ? 50 : 60}
             height={isScrolled ? 50 : 60}
             className="transition-all duration-500"
@@ -99,16 +132,19 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          {navItems.map((item) => renderLink(item))}
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          {navItemKeys.map((item) => renderLink(item))}
+          <LanguageToggle />
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        {/* Mobile: Language Toggle + Hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
               <svg
@@ -147,7 +183,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 md:hidden animate-in slide-in-from-top duration-300">
           <div className="container mx-auto px-6 py-8 flex flex-col space-y-2">
-            {navItems.map((item) => renderLink(item, true))}
+            {navItemKeys.map((item) => renderLink(item, true))}
           </div>
         </div>
       )}

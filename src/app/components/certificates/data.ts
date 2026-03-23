@@ -9,7 +9,7 @@ export const certificates: Certificate[] = [
     date: "2026",
     description:
       "Curso completo de Python abordando desde conceitos básicos até aplicações em análise de dados, machine learning e inteligência artificial.",
-    image: "",
+    image: "/certificates/cert-1.jpg",
     link: "https://www.datascienceacademy.com.br/course/fundamentos-de-linguagem-python-do-basico-a-aplicacoes-de-ia",
     tags: ["Python", "Data Science", "Machine Learning", "IA"],
     hours: "60h",
@@ -21,7 +21,7 @@ export const certificates: Certificate[] = [
     date: "2026",
     description:
       "Formação em fundamentos de ciência de dados, incluindo análise de dados, pensamento analítico, visualização e conceitos introdutórios de IA.",
-    image: "",
+    image: "/certificates/cert-1.jpg",
     link: "https://skills.yourlearning.ibm.com/activity/PLAN-DA328525E6FB?focuslmsId=ALM-COURSE_4058918",
     tags: ["Data Science", "IBM", "Analytics", "AI"],
     hours: "40h",
@@ -33,7 +33,7 @@ export const certificates: Certificate[] = [
     date: "2026",
     description:
       "Especialização em Machine Learning cobrindo algoritmos supervisionados e não supervisionados, redes neurais e melhores práticas em IA.",
-    image: "",
+    image: "/certificates/cert-2.jpg",
     link: "https://www.coursera.org/specializations/machine-learning-introduction",
     tags: ["Machine Learning", "Python", "AI", "Deep Learning"],
     hours: "80h",

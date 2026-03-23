@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "education": "Formação",
+    "skills": "Skills",
+    "projects": "Projetos",
+    "certificates": "Certificados",
+    "contact": "Contato"
+  },
+  "hero": {
+    "welcome": "BEM-VINDO AO MEU PORTFÓLIO",
+    "title": "Desenvolvendo Soluções Digitais",
+    "role": "Desenvolvedor de Dados e Inteligência Artificial",
+    "description": "Um profissional focado em Ciência de Dados, Inteligência Artificial e desenvolvimento de aplicações de alto desempenho.",
+    "cta_contact": "Entre em Contato",
+    "cta_resume": "Baixar Currículo"
+  },
+  "about": {
+    "section_label": "Apresentação",
+    "title": "Sobre Mim",
+    "bio": "Sou Claudinei Alves, desenvolvedor focado em Ciência de Dados, Inteligência Artificial e desenvolvimento de software. Tenho interesse em criar sistemas inteligentes e aplicações orientadas por dados, utilizando principalmente Python, machine learning e tecnologias modernas de desenvolvimento web.",
+    "stat_experience": "Experiência",
+    "stat_projects": "Projetos Desenvolvidos",
+    "stat_technologies": "Tecnologias Dominadas",
+    "quote": "Criar é permitir que o invisível se torne eterno na superfície do mundo."
+  },
+  "education": {
+    "section_label": "Formação Acadêmica",
+    "title": "Formação Acadêmica",
+    "subtitle": "Base da Minha Formação",
+    "quote": "A educação é a arma mais poderosa que você pode usar para mudar o mundo. - Nelson Mandela",
+    "present": "Presente"
+  },
+  "skills": {
+    "section_label": "Tecnologias",
+    "title": "Minhas Tecnologias"
+  },
+  "projects": {
+    "section_label": "Portfólio",
+    "title": "Principais Projetos",
+    "subtitle": "Uma seleção de soluções digitais de alto impacto, desenvolvidas com foco em escalabilidade e desempenho.",
+    "demo": "Demonstração",
+    "code": "Código",
+    "view_all": "Ver Todos os Projetos"
+  },
+  "certificates": {
+    "section_label": "Qualificações",
+    "title": "Meus Certificados",
+    "subtitle": "Certificações e cursos que comprovam minha expertise contínua em tecnologia e ciência de dados.",
+    "stat_certifications": "Certificações",
+    "stat_hours": "Horas de estudo",
+    "stat_technologies": "Tecnologias",
+    "completed_in": "Concluído em"
+  },
+  "contact": {
+    "section_label": "Comunicação",
+    "title": "Vamos Conversar",
+    "subtitle": "Tem um projeto em mente ou apenas quer dizer olá? Estou sempre aberto a discutir novas oportunidades e ideias criativas.",
+    "form_title": "Enviar Mensagem",
+    "form_response_time": "Responderei sua mensagem em até 24 horas.",
+    "name_label": "Seu Nome",
+    "email_label": "Seu Email",
+    "message_label": "Sua Mensagem",
+    "submit": "Enviar Mensagem",
+    "direct_title": "Contato Direto",
+    "social_title": "Redes Sociais",
+    "location_label": "Localização"
+  },
+  "footer": {
+    "nav_title": "Navegação",
+    "connect_title": "Conecte-se comigo",
+    "rights": "Todos os direitos reservados.",
+    "made_with": "Feito com ❤️ no Brasil"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "About",
+    "education": "Education",
+    "skills": "Skills",
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "contact": "Contact"
+  },
+  "hero": {
+    "welcome": "WELCOME TO MY PORTFOLIO",
+    "title": "Building Digital Solutions",
+    "role": "Data & Artificial Intelligence Developer",
+    "description": "A professional focused on Data Science, Artificial Intelligence, and high-performance application development.",
+    "cta_contact": "Get In Touch",
+    "cta_resume": "Download Resume"
+  },
+  "about": {
+    "section_label": "Introduction",
+    "title": "About Me",
+    "bio": "I'm Claudinei Alves, a developer focused on Data Science, Artificial Intelligence, and software development. I'm passionate about building intelligent systems and data-driven applications, using primarily Python, machine learning, and modern web development technologies. I'm currently pursuing a Bachelor's degree in Data Science and Artificial Intelligence, where I develop projects involving data analysis, machine learning models, and technological solutions for real-world problems. I constantly seek to learn new technologies and apply knowledge in practical and innovative projects.",
+    "stat_experience": "Experience",
+    "stat_projects": "Projects Developed",
+    "stat_technologies": "Technologies Mastered",
+    "quote": "To create is to allow the invisible to become eternal on the surface of the world."
+  },
+  "education": {
+    "section_label": "Academic Background",
+    "title": "Academic Background",
+    "subtitle": "The Foundation of My Education",
+    "quote": "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
+    "present": "Present"
+  },
+  "skills": {
+    "section_label": "Technologies",
+    "title": "My Technologies"
+  },
+  "projects": {
+    "section_label": "Portfolio",
+    "title": "Featured Projects",
+    "subtitle": "A selection of high-impact digital solutions, developed with a focus on scalability and performance.",
+    "demo": "Live Demo",
+    "code": "Source Code",
+    "view_all": "View All Projects"
+  },
+  "certificates": {
+    "section_label": "Qualifications",
+    "title": "My Certificates",
+    "subtitle": "Certifications and courses that prove my continuous expertise in technology and data science.",
+    "stat_certifications": "Certifications",
+    "stat_hours": "Study Hours",
+    "stat_technologies": "Technologies",
+    "completed_in": "Completed in"
+  },
+  "contact": {
+    "section_label": "Communication",
+    "title": "Let's Talk",
+    "subtitle": "Have a project in mind or just want to say hello? I'm always open to discussing new opportunities and creative ideas.",
+    "form_title": "Send a Message",
+    "form_response_time": "I'll respond to your message within 24 hours.",
+    "name_label": "Your Name",
+    "email_label": "Your Email",
+    "message_label": "Your Message",
+    "submit": "Send Message",
+    "direct_title": "Direct Contact",
+    "social_title": "Social Media",
+    "location_label": "Location"
+  },
+  "footer": {
+    "nav_title": "Navigation",
+    "connect_title": "Connect With Me",
+    "rights": "All rights reserved.",
+    "made_with": "Made with ❤️ in Brazil"
+  }
+}

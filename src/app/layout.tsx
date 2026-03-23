@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "@/../utils/ScrollToTopButton";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,7 +35,6 @@ export const metadata: Metadata = {
     "Data Analysis",
   ],
   authors: [{ name: "Claudinei Alves" }],
-
   openGraph: {
     title: "Claudinei Alves | AI & Data Science Portfolio",
     description:
@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Claudinei Alves | AI Engineer",
@@ -60,7 +59,6 @@ export const metadata: Metadata = {
       "Projetos de Inteligência Artificial, Machine Learning e desenvolvimento web moderno.",
     images: ["/portfolio-preview.png"],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -69,22 +67,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    // lang="en" é o default — o LanguageProvider atualiza via
+    // document.documentElement.lang ao trocar idioma no client
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-
-        <main className="text-white">
-          <div className="container">{children}</div>
-        </main>
-
-        <ScrollToTopButton />
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="text-white">
+            <div className="container">{children}</div>
+          </main>
+          <ScrollToTopButton />
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
