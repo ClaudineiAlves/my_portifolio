@@ -53,5 +53,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 LinkedIn: [here](https://www.linkedin.com/in/claudinei-alves-reis/)
 GitHub: [here](https://github.com/ClaudineiAlves)
 Email: [alvesreis.dev@gmail.com](mailto:alvesreis.dev@gmail.com)  
-
-```
