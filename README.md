@@ -12,7 +12,7 @@ Este site foi desenvolvido utilizando tecnologias modernas de desenvolvimento we
 ---
 ## Live Demo
 
-🔗 [Visit Portfolio Website]()
+🔗 [Visit Portfolio Website](https://claudineiportifolio.vercel.app/)
 
 ---
 
@@ -38,60 +38,8 @@ Este site foi desenvolvido utilizando tecnologias modernas de desenvolvimento we
 - 📧 Formulário de contato funcional
 - 🌙 UI otimizada para experiência do usuário
 ---
-
-## 🛠️ Getting Started
-
-### 1. Clone this repo
-
-```bash
-git clone https://github.com/your-username/your-portfolio.git
-cd your-portfolio
-```
-
-### 2. Install dependencies
-
-```bash
-pnpm install
-# or
-npm install
-# or
-yarn install
-```
-
-### 3. Run the development server
-
-```bash
-pnpm dev
-# or
-npm run dev
-```
-
-Then visit: [http://localhost:3000](http://localhost:3000)
-
----
-
-## 🧪 Environment Variables
-
-Copy `.env.example` and create `.env.local`:
-
-```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
-```
-
----
-
-## 📦 Deployment
-
-deployed  [here]()
-
----
-
 ## 📄 License
-
 This project is open-source and available under the [MIT License](LICENSE).
-
 ---
 
 ## 📬 Autor
@@ -105,5 +53,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 LinkedIn: [here](https://www.linkedin.com/in/claudinei-alves-reis/)
 GitHub: [here](https://github.com/ClaudineiAlves)
 Email: [alvesreis.dev@gmail.com](mailto:alvesreis.dev@gmail.com)  
-
-```
