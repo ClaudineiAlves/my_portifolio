@@ -120,46 +120,6 @@
         "highlight_3": "An interesting technology or architecture used.",
         "challenge_1": "Main technical challenge faced during development.",
         "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
-      },
-      "4": {
-        "name": "Project Name",
-        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
-        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
-        "highlight_1": "An important feature or characteristic of the project.",
-        "highlight_2": "Another relevant implementation highlight.",
-        "highlight_3": "An interesting technology or architecture used.",
-        "challenge_1": "Main technical challenge faced during development.",
-        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
-      },
-      "5": {
-        "name": "Project Name",
-        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
-        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
-        "highlight_1": "An important feature or characteristic of the project.",
-        "highlight_2": "Another relevant implementation highlight.",
-        "highlight_3": "An interesting technology or architecture used.",
-        "challenge_1": "Main technical challenge faced during development.",
-        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
-      },
-      "6": {
-        "name": "Project Name",
-        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
-        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
-        "highlight_1": "An important feature or characteristic of the project.",
-        "highlight_2": "Another relevant implementation highlight.",
-        "highlight_3": "An interesting technology or architecture used.",
-        "challenge_1": "Main technical challenge faced during development.",
-        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
-      },
-      "7": {
-        "name": "Project Name",
-        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
-        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
-        "highlight_1": "An important feature or characteristic of the project.",
-        "highlight_2": "Another relevant implementation highlight.",
-        "highlight_3": "An interesting technology or architecture used.",
-        "challenge_1": "Main technical challenge faced during development.",
-        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
       }
     }
   },
@@ -176,7 +136,7 @@
       "1": {
         "title": "Python Language Fundamentals for Data Analysis and AI",
         "institution": "Data Science Academy",
-        "description": "Comprehensive Python course covering fundamentals through applications in data analysis, machine learning, and artificial intelligence."
+        "description": "Comprehensive and free course covering Python basics to advanced Artificial Intelligence applications. Includes 10 hands-on mini-projects: game development, banking systems with Object-Oriented Programming, AI coding assistant, e-commerce analysis, Machine Learning models for sentiment analysis, Deep Learning with PyTorch for image classification, Generative AI with LLMs and RAG for legal assistant, multi-agent deployment with CrewAI, and interactive dashboards with Streamlit."
       },
       "2": {
         "title": "Data Science Foundations",
@@ -216,6 +176,6 @@
     "nav_title": "Navigation",
     "connect_title": "Connect With Me",
     "rights": "All rights reserved.",
-    "made_with": "Made with ❤️ in Brazil"
+    "made_with": "Made in Brazil"
   }
 }

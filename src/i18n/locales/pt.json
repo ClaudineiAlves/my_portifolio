@@ -120,46 +120,6 @@
         "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
         "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
         "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
-      },
-      "4": {
-        "name": "Nome do Projeto",
-        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
-        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
-        "highlight_1": "Funcionalidade ou característica importante do projeto.",
-        "highlight_2": "Outro destaque relevante da implementação.",
-        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
-        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
-        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
-      },
-      "5": {
-        "name": "Nome do Projeto",
-        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
-        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
-        "highlight_1": "Funcionalidade ou característica importante do projeto.",
-        "highlight_2": "Outro destaque relevante da implementação.",
-        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
-        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
-        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
-      },
-      "6": {
-        "name": "Nome do Projeto",
-        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
-        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
-        "highlight_1": "Funcionalidade ou característica importante do projeto.",
-        "highlight_2": "Outro destaque relevante da implementação.",
-        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
-        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
-        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
-      },
-      "7": {
-        "name": "Nome do Projeto",
-        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
-        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
-        "highlight_1": "Funcionalidade ou característica importante do projeto.",
-        "highlight_2": "Outro destaque relevante da implementação.",
-        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
-        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
-        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
       }
     }
   },
@@ -176,7 +136,7 @@
       "1": {
         "title": "Fundamentos de Linguagem Python para Análise de Dados e IA",
         "institution": "Data Science Academy",
-        "description": "Curso completo de Python abordando desde conceitos básicos até aplicações em análise de dados, machine learning e inteligência artificial."
+        "description": "Curso completo e gratuito que abrange desde conceitos básicos de Python até aplicações avançadas em Inteligência Artificial. Inclui 10 mini-projetos práticos: desenvolvimento de games, sistemas bancários com Programação Orientada a Objetos, assistente de IA para programação, análise de e-commerce, modelos de Machine Learning para análise de sentimentos, Deep Learning com PyTorch para classificação de imagens, IA Generativa com LLMs e RAG para assistente jurídico, deploy de multi-agentes com CrewAI, e dashboards interativos com Streamlit."
       },
       "2": {
         "title": "Data Science Foundations",
@@ -216,6 +176,6 @@
     "nav_title": "Navegação",
     "connect_title": "Conecte-se comigo",
     "rights": "Todos os direitos reservados.",
-    "made_with": "Feito com ❤️ no Brasil"
+    "made_with": "Feito no Brasil"
   }
 }

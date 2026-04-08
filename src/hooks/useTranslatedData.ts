@@ -130,7 +130,7 @@ export function useCertificates(): CertificateItem[] {
       image: "/certificates/cert-1.jpg",
       link: "https://www.datascienceacademy.com.br/course/fundamentos-de-linguagem-python-do-basico-a-aplicacoes-de-ia",
       tags: ["Python", "Data Science", "Machine Learning", "IA"],
-      hours: "60h",
+      hours: "96h",
     },
     {
       id: "2",
