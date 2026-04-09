@@ -1,8 +1,8 @@
 export const skillsData = [
   // PYTHON & DATA SCIENCE CORE
   "Python",
-  "Django",
-  "Flask",
+  //"Django",
+  //"Flask",
   "Pandas",
   "NumPy",
   "Matplotlib",
@@ -11,34 +11,34 @@ export const skillsData = [
   "TensorFlow",
   "Keras",
   "PyTorch",
-  
+
   // BANCO DE DADOS
   "SQLite",
   "PostgreSQL",
-  "MongoDB",
+  //"MongoDB",
   "MySQL",
-  "Supabase",
-  "Firebase",
-  
+  //"Supabase",
+  //"Firebase",
+
   // DEVOPS & CLOUD
-  "Docker",
-  "AWS",
-  "Azure",
-  "Google Cloud",
+  //"Docker",
+  //"AWS",
+  //"Azure",
+  //"Google Cloud",
   "Linux",
-  
+
   // WEB (se precisar no futuro)
-  
-  "HTML",
-  "CSS",
-  "JavaScript",
+
+  //"HTML",
+  //"CSS",
+  //"JavaScript",
   /*
   "React",
   "Node.js",
   */
-  
+
   // OUTROS
   "Git",
   "Java",
-  "Unity",
+  //"Unity",
 ];
