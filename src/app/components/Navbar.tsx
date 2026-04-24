@@ -15,7 +15,7 @@ const flags: Record<Locale, string> = {
   pt: "🇧🇷",
 };
 
-// Chaves de tradução para cada item da navbar (alinhado com en.json / pt.json)
+// Chaves de tradução para cada item da navbar
 const navItemKeys = [
   { key: "nav.about", to: "about" },
   { key: "nav.education", to: "education" },
@@ -36,9 +36,10 @@ function LanguageToggle() {
     <button
       onClick={toggle}
       aria-label={`Switch to ${locale === "en" ? "Português" : "English"}`}
-      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20
-                 bg-white/10 hover:bg-white/20 transition-all duration-300 text-sm font-medium
-                 text-slate-300 hover:text-white select-none"
+      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-bg-tertiary
+                 bg-bg-secondary hover:bg-bg-tertiary hover:border-primary-500/30 
+                 transition-all duration-300 text-sm font-medium
+                 text-content-secondary hover:text-primary-400 select-none"
     >
       <span>{flags[locale]}</span>
       <span className="hidden sm:inline">{localeNames[locale]}</span>
@@ -59,7 +60,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fecha o menu mobile ao trocar de rota
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -69,8 +69,8 @@ const Navbar = () => {
     const isHomePage = pathname === "/";
 
     const baseClasses = isMobile
-      ? "block cursor-pointer py-3 text-lg font-semibold transition-all duration-300 border-b border-white/5"
-      : "cursor-pointer transition-all duration-300 relative group px-2 py-1 text-sm lg:text-base font-medium";
+      ? "block cursor-pointer py-3 text-lg font-semibold transition-all duration-300 border-b border-bg-tertiary text-content-secondary hover:text-primary-400 hover:pl-2"
+      : "cursor-pointer transition-all duration-300 relative group px-2 py-1 text-body-small font-medium";
 
     if (isHomePage) {
       return (
@@ -81,13 +81,13 @@ const Navbar = () => {
           smooth={true}
           offset={-80}
           duration={500}
-          activeClass="text-red-500 !font-bold"
-          className={`${baseClasses} text-slate-300 hover:text-white`}
+          activeClass="!text-primary-500 !font-bold"
+          className={`${baseClasses} text-content-secondary hover:text-primary-400`}
           onClick={isMobile ? () => setIsMenuOpen(false) : undefined}
         >
           {label}
           {!isMobile && (
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-900 transition-all duration-300 group-hover:w-full [.text-red-500_&]:w-full" />
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-primary-900 transition-all duration-300 group-hover:w-full [.text-primary-500_&]:w-full" />
           )}
         </ScrollLink>
       );
@@ -97,12 +97,12 @@ const Navbar = () => {
       <Link
         key={item.to}
         href={`/#${item.to}`}
-        className={`${baseClasses} text-slate-300 hover:text-white`}
+        className={`${baseClasses} text-content-secondary hover:text-primary-400`}
         onClick={() => isMobile && setIsMenuOpen(false)}
       >
         {label}
         {!isMobile && (
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-600 to-red-900 transition-all duration-300 group-hover:w-full" />
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-primary-900 transition-all duration-300 group-hover:w-full" />
         )}
       </Link>
     );
@@ -112,7 +112,7 @@ const Navbar = () => {
     <nav
       className={`sticky top-0 z-[9999] transition-all duration-500 ${
         isScrolled
-          ? "bg-[#050505]/80 backdrop-blur-xl border-b border-white/10 py-2"
+          ? "bg-bg-primary/80 backdrop-blur-xl border-b border-bg-tertiary py-2 shadow-lg"
           : "bg-transparent py-4"
       }`}
     >
@@ -127,7 +127,7 @@ const Navbar = () => {
             alt="Claudinei Alves"
             width={isScrolled ? 50 : 60}
             height={isScrolled ? 50 : 60}
-            className="transition-all duration-500"
+            className="transition-all duration-500 brightness-125 hover:brightness-150"
           />
         </Link>
 
@@ -142,7 +142,7 @@ const Navbar = () => {
           <LanguageToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="p-2 text-content-primary hover:bg-bg-secondary rounded-lg transition-colors border border-transparent hover:border-bg-tertiary"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
@@ -181,7 +181,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 md:hidden animate-in slide-in-from-top duration-300">
+        <div className="absolute top-full left-0 w-full bg-bg-primary/95 backdrop-blur-2xl border-b border-bg-tertiary md:hidden animate-in slide-in-from-top duration-300">
           <div className="container mx-auto px-6 py-8 flex flex-col space-y-2">
             {navItemKeys.map((item) => renderLink(item, true))}
           </div>

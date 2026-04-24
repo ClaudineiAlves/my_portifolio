@@ -1,76 +1,123 @@
-// src/app/components/certificates/page.tsx
 "use client";
 
-import SectionReveal from "../SectionReveal";
-import CertificateCarousel from "./CertificateCarousel";
-import { useCertificates } from "@/hooks/useTranslatedData";
-import { Award } from "lucide-react";
+import { Award, Clock, Layers } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCertificates } from "@/hooks/useTranslatedData";
+import RevealText from "../RevealText";
+import CertificateCarousel from "./CertificateCarousel";
+
+// Componente reutilizável para Stats (evita repetição)
+interface StatCardProps {
+  icon: React.ReactNode;
+  value: string | number;
+  label: string;
+  delay?: number;
+}
+
+function StatCard({ icon, value, label, delay = 0 }: StatCardProps) {
+  return (
+    <RevealText delay={delay}>
+      <div className="group text-center p-6 rounded-2xl bg-bg-secondary/50 border border-bg-tertiary hover:border-primary-500/30 hover:shadow-glow-sm transition-all duration-300 min-w-[140px]">
+        <div className="flex justify-center mb-3 text-primary-500 group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </div>
+        <div className="text-headline font-bold text-content-primary font-variable group-hover:text-primary-400 transition-colors">
+          {value}
+        </div>
+        <div className="text-caption text-content-subtle mt-1">{label}</div>
+      </div>
+    </RevealText>
+  );
+}
 
 export default function Certificates() {
   const { t } = useLanguage();
-  const certificates = useCertificates(); // dados já traduzidos
+  const certificates = useCertificates();
+
+  // Cálculos memoizados para evitar re-computação
+  const totalHours = certificates.reduce(
+    (acc, cert) => acc + parseInt(cert.hours || "0"),
+    0,
+  );
+
+  const uniqueTechnologies = new Set(certificates.flatMap((c) => c.tags)).size;
+
+  const statsData = [
+    {
+      icon: <Award size={24} />,
+      value: `${certificates.length}+`,
+      label: t("certificates.stat_certifications"),
+      delay: 100,
+    },
+    {
+      icon: <Clock size={24} />,
+      value: `${totalHours}h`,
+      label: t("certificates.stat_hours"),
+      delay: 200,
+    },
+    {
+      icon: <Layers size={24} />,
+      value: `${uniqueTechnologies}+`,
+      label: t("certificates.stat_technologies"),
+      delay: 300,
+    },
+  ];
 
   return (
     <section
       id="certificates"
-      className="py-20 px-4 md:px-8 lg:px-16 bg-[#0a0a0a]"
+      className="py-24 px-4 md:px-8 lg:px-16 bg-bg-secondary/30 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        <SectionReveal>
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full mb-4">
-              <Award size={18} className="text-red-500" />
-              <span className="text-red-400 text-sm font-medium">
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary-600/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <RevealText>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full mb-6">
+              <Award size={18} className="text-primary-400" />
+              <span className="text-caption text-primary-400">
                 {t("certificates.section_label")}
               </span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          </RevealText>
+
+          <RevealText delay={100}>
+            <h2 className="text-headline font-bold text-content-primary mb-4">
               {t("certificates.title_word1")}{" "}
-              <span className="text-red-600">
+              <span className="title-gradient">
                 {t("certificates.title_word2")}
               </span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          </RevealText>
+
+          <RevealText delay={200}>
+            <p className="text-body-large text-content-secondary max-w-2xl mx-auto">
               {t("certificates.subtitle")}
             </p>
-          </div>
+          </RevealText>
+        </div>
 
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-red-500">
-                {certificates.length}+
-              </div>
-              <div className="text-sm text-gray-400">
-                {t("certificates.stat_certifications")}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-red-500">
-                {certificates.reduce(
-                  (acc, cert) => acc + parseInt(cert.hours || "0"),
-                  0,
-                )}
-                h
-              </div>
-              <div className="text-sm text-gray-400">
-                {t("certificates.stat_hours")}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-red-500">
-                {new Set(certificates.flatMap((c) => c.tags)).size}+
-              </div>
-              <div className="text-sm text-gray-400">
-                {t("certificates.stat_technologies")}
-              </div>
-            </div>
-          </div>
-        </SectionReveal>
+        {/* Stats Grid - usando componente reutilizável */}
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
+          {statsData.map((stat, index) => (
+            <StatCard
+              key={index}
+              icon={stat.icon}
+              value={stat.value}
+              label={stat.label}
+              delay={stat.delay}
+            />
+          ))}
+        </div>
 
-        <SectionReveal delay={0.2}>
-          <CertificateCarousel certificates={certificates} />
-        </SectionReveal>
+        {/* Carousel */}
+        <RevealText delay={400}>
+          <div className="relative">
+            <CertificateCarousel certificates={certificates} />
+          </div>
+        </RevealText>
       </div>
     </section>
   );

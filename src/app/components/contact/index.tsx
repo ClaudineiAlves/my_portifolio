@@ -6,7 +6,7 @@ import { IoLogoGithub, IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
 import { personalData } from "@/../utils/Data/PersonalData";
 import ContactWithoutCaptcha from "./contact-without-captcha";
-import SectionReveal from "../SectionReveal";
+import RevealText from "../RevealText";
 import { MapPin, Send, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -15,7 +15,7 @@ interface ContactLinkProps {
   icon: React.ElementType;
   label: string;
   value: string;
-  color: string;
+  colorClass: string;
 }
 
 const ContactInfoCard = ({
@@ -23,35 +23,28 @@ const ContactInfoCard = ({
   icon: Icon,
   label,
   value,
-  color,
+  colorClass,
 }: ContactLinkProps) => (
   <Link
     href={href}
     target="_blank"
-    className="group relative flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300 shadow-xl"
+    className="group relative flex items-center gap-4 p-4 rounded-2xl border border-bg-tertiary bg-bg-secondary/50 hover:bg-bg-secondary hover:border-primary-500/30 transition-all duration-300 shadow-card hover:shadow-glow-sm"
   >
     <div
-      className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300"
-      style={{ backgroundColor: `${color}15` }}
+      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-primary-500/10 group-hover:bg-primary-500/20`}
     >
       <Icon
-        className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
-        style={{ color: color }}
+        className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${colorClass}`}
       />
     </div>
     <div className="flex flex-col">
-      <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
-        {label}
-      </span>
-      <span className="text-sm md:text-base text-slate-200 font-medium group-hover:text-white transition-colors">
+      <span className="text-caption text-content-subtle mb-1">{label}</span>
+      <span className="text-body text-content-primary font-medium group-hover:text-primary-400 transition-colors">
         {value}
       </span>
     </div>
     {/* Hover Glow */}
-    <div
-      className="absolute inset-0 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 pointer-events-none blur-xl"
-      style={{ backgroundColor: color }}
-    />
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300 pointer-events-none blur-xl bg-primary-500" />
   </Link>
 );
 
@@ -59,49 +52,57 @@ function ContactSection() {
   const { t } = useLanguage();
 
   return (
-    <div id="contact" className="relative z-50 py-24 lg:py-48 overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-red-500/10 blur-[150px] rounded-full pointer-events-none" />
+    <section
+      id="contact"
+      className="relative z-50 py-24 lg:py-48 overflow-hidden"
+    >
+      {/* Background Decorative Elements - novas cores */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary-600/10 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8">
-        <SectionReveal direction="up">
-          <div className="flex flex-col items-center gap-6 mb-20">
-            <div className="flex items-center gap-3 text-red-500">
-              <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
-                <MessageSquare className="w-5 h-5 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+        {/* Header */}
+        <div className="flex flex-col items-center gap-6 mb-20">
+          <RevealText>
+            <div className="flex items-center gap-3 text-primary-500">
+              <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center border border-primary-500/20">
+                <MessageSquare className="w-5 h-5 text-primary-400" />
               </div>
-              <span className="text-sm font-bold uppercase tracking-[0.3em]">
+              <span className="text-caption text-primary-400">
                 {t("contact.section_label")}
               </span>
             </div>
+          </RevealText>
 
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight text-center">
+          <RevealText delay={100}>
+            <h2 className="text-headline font-bold text-content-primary tracking-tight text-center">
               {t("contact.title_word1")}{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
-                {t("contact.title_word2")}
-              </span>
+              <span className="title-gradient">{t("contact.title_word2")}</span>
             </h2>
+          </RevealText>
 
-            <p className="text-slate-400 text-lg max-w-2xl text-center">
+          <RevealText delay={200}>
+            <p className="text-body-large text-content-secondary max-w-2xl text-center">
               {t("contact.subtitle")}
             </p>
-          </div>
-        </SectionReveal>
+          </RevealText>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
           {/* Left Side: Form */}
           <div className="lg:col-span-7">
-            <SectionReveal direction="right">
-              <ContactWithoutCaptcha />
-            </SectionReveal>
+            <RevealText direction="right" delay={300}>
+              <div className="bg-bg-secondary/30 border border-bg-tertiary rounded-3xl p-8 shadow-card">
+                <ContactWithoutCaptcha />
+              </div>
+            </RevealText>
           </div>
 
           {/* Right Side: Info & Socials */}
           <div className="lg:col-span-5 flex flex-col gap-12">
-            <SectionReveal direction="left">
+            <RevealText direction="left" delay={400}>
               <div className="flex flex-col gap-6">
-                <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                  <Send className="w-5 h-5 text-red-600" />
+                <h3 className="text-xl font-bold text-content-primary flex items-center gap-3">
+                  <Send className="w-5 h-5 text-primary-500" />
                   {t("contact.direct_title")}
                 </h3>
                 <div className="flex flex-col gap-4">
@@ -110,63 +111,55 @@ function ContactSection() {
                     icon={MdAlternateEmail}
                     label="Email"
                     value={personalData.email}
-                    color="#ef4444"
+                    colorClass="text-primary-500"
                   />
                   <ContactInfoCard
                     href={`tel:${personalData.phone}`}
                     icon={IoMdCall}
                     label={t("contact.phone_label")}
                     value={personalData.phone}
-                    color="#dc2626"
+                    colorClass="text-primary-600"
                   />
                   <ContactInfoCard
                     href="#"
                     icon={MapPin}
                     label={t("contact.location_label")}
                     value={personalData.address}
-                    color="#991b1b"
+                    colorClass="text-primary-700"
                   />
                 </div>
               </div>
-            </SectionReveal>
+            </RevealText>
 
-            <SectionReveal direction="left" delay={0.2}>
+            <RevealText direction="left" delay={500}>
               <div className="flex flex-col gap-6">
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-content-primary">
                   {t("contact.social_title")}
                 </h3>
                 <div className="flex flex-wrap gap-4">
-                  {[
-                    {
-                      href: personalData.github,
-                      icon: IoLogoGithub,
-                      color: "#ffffff",
-                    },
-                    {
-                      href: personalData.linkedIn,
-                      icon: BiLogoLinkedin,
-                      color: "#0077b5",
-                    },
-                  ].map((social, idx) => (
-                    <Link
-                      key={idx}
-                      href={social.href}
-                      target="_blank"
-                      className="w-14 h-14 rounded-2xl border border-white/5 bg-white/[0.02] flex items-center justify-center hover:bg-white/[0.05] hover:border-white/20 hover:scale-110 transition-all duration-300"
-                    >
-                      <social.icon
-                        className="w-6 h-6"
-                        style={{ color: social.color }}
-                      />
-                    </Link>
-                  ))}
+                  <Link
+                    href={personalData.github}
+                    target="_blank"
+                    className="w-14 h-14 rounded-2xl border border-bg-tertiary bg-bg-secondary flex items-center justify-center hover:bg-bg-tertiary hover:border-primary-500/30 hover:scale-110 hover:shadow-glow-sm transition-all duration-300 text-content-secondary hover:text-primary-400"
+                    aria-label="GitHub"
+                  >
+                    <IoLogoGithub className="w-6 h-6" />
+                  </Link>
+                  <Link
+                    href={personalData.linkedIn}
+                    target="_blank"
+                    className="w-14 h-14 rounded-2xl border border-bg-tertiary bg-bg-secondary flex items-center justify-center hover:bg-bg-tertiary hover:border-primary-500/30 hover:scale-110 hover:shadow-glow-sm transition-all duration-300 text-content-secondary hover:text-primary-400"
+                    aria-label="LinkedIn"
+                  >
+                    <BiLogoLinkedin className="w-6 h-6" />
+                  </Link>
                 </div>
               </div>
-            </SectionReveal>
+            </RevealText>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

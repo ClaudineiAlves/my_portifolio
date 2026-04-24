@@ -28,6 +28,7 @@ export const certificates: Certificate[] = [
     ],
     hours: "96h",
   },
+  /*
   {
     id: "2",
     title: "Data Science Foundations",
@@ -40,6 +41,8 @@ export const certificates: Certificate[] = [
     tags: ["Data Science", "IBM", "Analytics", "AI"],
     hours: "40h",
   },
+  */
+  /*
   {
     id: "3",
     title: "Machine Learning Specialization",
@@ -52,4 +55,5 @@ export const certificates: Certificate[] = [
     tags: ["Machine Learning", "Python", "AI", "Deep Learning"],
     hours: "80h",
   },
+  */
 ];

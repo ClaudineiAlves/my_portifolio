@@ -4,7 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Certificate } from "./types";
-import { Calendar, Clock, Award, ArrowRight } from "lucide-react";
+import { Calendar, Clock, Award, ArrowUpRight } from "lucide-react";
 
 interface CertificateCardProps {
   certificate: Certificate;
@@ -12,11 +12,15 @@ interface CertificateCardProps {
 
 export default function CertificateCard({ certificate }: CertificateCardProps) {
   return (
-    <Link href={`/certificado/${certificate.id}`}>
-      <div
-        className="relative group cursor-pointer bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] 
-                   border border-[#333] rounded-xl overflow-hidden shadow-lg hover:shadow-red-500/20 
-                   transition-all duration-300 h-full hover:-translate-y-2 hover:scale-[1.02]"
+    <Link
+      href={`/certificado/${certificate.id}`}
+      className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded-xl"
+    >
+      <article
+        className="relative group h-full bg-gradient-to-br from-bg-secondary to-bg-primary 
+                   border border-bg-tertiary rounded-xl overflow-hidden shadow-card 
+                   hover:shadow-glow-md hover:border-primary-500/30 
+                   transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02]"
       >
         {/* Imagem do Certificado */}
         <div className="relative h-48 w-full overflow-hidden">
@@ -24,13 +28,16 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
             src={certificate.image}
             alt={certificate.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="(max-width: 768px) 100vw, 380px"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-          {/* Badge de horas */}
+          {/* Gradient overlay refinado */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+          {/* Badge de horas - novo estilo */}
           {certificate.hours && (
-            <div className="absolute top-3 right-3 bg-red-600/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+            <div className="absolute top-3 right-3 bg-primary-600/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-primary-500/30 shadow-lg">
               <Clock size={12} className="text-white" />
               <span className="text-xs font-semibold text-white">
                 {certificate.hours}
@@ -38,45 +45,58 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
             </div>
           )}
 
-          {/* Overlay com ícone de expandir */}
-          <div className="absolute inset-0 bg-red-600/0 group-hover:bg-red-600/20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-            <div className="bg-red-600 p-3 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300">
-              <ArrowRight size={24} className="text-white" />
+          {/* Overlay com ícone no hover */}
+          <div className="absolute inset-0 bg-primary-600/0 group-hover:bg-primary-600/20 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100 backdrop-blur-[2px]">
+            <div className="bg-primary-600 p-3 rounded-full transform scale-0 group-hover:scale-100 transition-all duration-500 shadow-glow-lg">
+              <ArrowUpRight size={24} className="text-white" />
             </div>
           </div>
         </div>
 
         {/* Conteúdo */}
-        <div className="p-5">
-          <div className="flex items-start justify-between mb-2">
-            <h3 className="text-lg font-bold text-white line-clamp-2 group-hover:text-red-500 transition-colors">
-              {certificate.title}
-            </h3>
+        <div className="p-5 space-y-3">
+          {/* Título com nova tipografia */}
+          <h3 className="text-lg font-bold text-content-primary line-clamp-2 group-hover:text-primary-400 transition-colors duration-300 font-variable">
+            {certificate.title}
+          </h3>
+
+          {/* Instituição */}
+          <div className="flex items-center gap-2 text-body text-content-secondary">
+            <Award size={14} className="text-primary-500 flex-shrink-0" />
+            <span className="line-clamp-1">{certificate.institution}</span>
           </div>
 
-          <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
-            <Award size={14} className="text-red-500" />
-            {certificate.institution}
-          </p>
-
-          <p className="text-xs text-gray-500 mb-4 flex items-center gap-2">
-            <Calendar size={14} />
-            Concluído em {certificate.date}
-          </p>
+          {/* Data */}
+          <div className="flex items-center gap-2 text-caption text-content-subtle">
+            <Calendar size={14} className="flex-shrink-0" />
+            <span>Concluído em {certificate.date}</span>
+          </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {certificate.tags.slice(0, 3).map((tag) => (
+          <div className="flex flex-wrap gap-2 pt-2">
+            {certificate.tags.slice(0, 3).map((tag, index) => (
               <span
                 key={tag}
-                className="text-xs px-2 py-1 bg-red-500/10 text-red-400 rounded-md border border-red-500/20"
+                className="text-xs px-2.5 py-1 bg-primary-500/10 text-primary-400 rounded-md border border-primary-500/20 
+                         hover:bg-primary-500/20 hover:border-primary-500/40 transition-all duration-300"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 {tag}
               </span>
             ))}
+            {certificate.tags.length > 3 && (
+              <span className="text-xs px-2.5 py-1 text-content-subtle">
+                +{certificate.tags.length - 3}
+              </span>
+            )}
           </div>
         </div>
-      </div>
+
+        {/* Barra de progresso decorativa no bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-bg-tertiary overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-primary-600 to-primary-400 w-0 group-hover:w-full transition-all duration-700 ease-out" />
+        </div>
+      </article>
     </Link>
   );
 }

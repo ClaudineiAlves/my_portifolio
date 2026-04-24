@@ -127,11 +127,12 @@ export function useCertificates(): CertificateItem[] {
       institution: t("certificates.items.1.institution"),
       date: "2026",
       description: t("certificates.items.1.description"),
-      image: "/certificates/cert-1.jpg",
+      image: "/certificates/dsa-python-fundamentos.jpg",
       link: "https://www.datascienceacademy.com.br/course/fundamentos-de-linguagem-python-do-basico-a-aplicacoes-de-ia",
       tags: ["Python", "Data Science", "Machine Learning", "IA"],
       hours: "96h",
     },
+    /*
     {
       id: "2",
       title: t("certificates.items.2.title"),
@@ -143,6 +144,8 @@ export function useCertificates(): CertificateItem[] {
       tags: ["Data Science", "IBM", "Analytics", "AI"],
       hours: "40h",
     },
+    */
+    /*
     {
       id: "3",
       title: t("certificates.items.3.title"),
@@ -154,6 +157,7 @@ export function useCertificates(): CertificateItem[] {
       tags: ["Machine Learning", "Python", "AI", "Deep Learning"],
       hours: "80h",
     },
+    */
   ];
 }
 
