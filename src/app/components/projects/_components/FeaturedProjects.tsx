@@ -45,7 +45,7 @@ const FeaturedProjects = () => {
             className="w-full"
           >
             <CarouselContent className="-ml-4">
-              {projectsData.map((project, index) => (
+              {projectsData.map((project) => (
                 <CarouselItem
                   key={project.id}
                   className="pl-4 md:basis-1/2 lg:basis-1/3"
