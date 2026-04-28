@@ -22,7 +22,7 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
   display: "swap",
-  preload: false, // Mono não precisa preload se uso for limitado
+  preload: false,
 });
 
 // Metadados traduzidos
@@ -129,7 +129,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: data.twitterTitle,
       description: data.twitterDescription,
       images: ["/portfolio-preview.png"],
-      creator: "@claudinei_alves", // Adicione seu handle se tiver
+      creator: "@claudinei_alves",
     },
     alternates: {
       canonical: "https://claudineiportifolio.vercel.app",
@@ -139,7 +139,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     verification: {
-      google: "seu-código-do-google-search-console", // Adicione quando tiver
+      google: "seu-código-do-google-search-console",
     },
     category: "technology",
   };
@@ -159,7 +159,7 @@ function generateStructuredData(locale: string) {
     url: "https://claudineiportifolio.vercel.app",
     sameAs: [
       "https://github.com/ClaudineiAlves",
-      "https://linkedin.com/in/claudinei-alves", // Atualize com seu LinkedIn real
+      "https://linkedin.com/in/claudinei-alves",
     ],
     knowsAbout: [
       "Artificial Intelligence",
@@ -184,14 +184,40 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const cookieStore = await cookies();
-  const locale =
+  const serverLocale =
     (cookieStore.get("portfolio-locale")?.value as "pt" | "en") || "en";
 
-  const structuredData = generateStructuredData(locale);
+  const structuredData = generateStructuredData(serverLocale);
 
   return (
-    <html lang={locale} suppressHydrationWarning className="dark" dir="ltr">
+    <html
+      lang={serverLocale}
+      data-locale={serverLocale}
+      suppressHydrationWarning
+      className="dark"
+      dir="ltr"
+    >
       <head>
+        {/* Script inline para sincronizar idioma antes do React hidratar */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem("portfolio-locale");
+                  var cookieMatch = document.cookie.match(/(?:^|; )portfolio-locale=([^;]*)/);
+                  var cookie = cookieMatch ? decodeURIComponent(cookieMatch[1]) : null;
+                  var locale = saved || cookie || "${serverLocale}";
+                  if (locale === "pt" || locale === "en") {
+                    document.documentElement.lang = locale;
+                    document.documentElement.setAttribute("data-locale", locale);
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+
         {/* Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"

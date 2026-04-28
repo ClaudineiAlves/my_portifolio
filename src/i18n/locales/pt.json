@@ -120,6 +120,46 @@
         "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
         "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
         "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "4": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "5": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "6": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+      },
+      "7": {
+        "name": "Nome do Projeto",
+        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
+        "highlight_1": "Funcionalidade ou característica importante do projeto.",
+        "highlight_2": "Outro destaque relevante da implementação.",
+        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
+        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
+        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
       }
     }
   },
