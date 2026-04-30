@@ -8,7 +8,6 @@ import ScrollToTopButton from "@/../utils/ScrollToTopButton";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import AccessibilityToggle from "./components/AccessibilityToggle";
 
-// Fonte Geist com display swap para performance
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -25,7 +24,20 @@ const geistMono = localFont({
   preload: false,
 });
 
-// Metadados traduzidos
+const VALID_LOCALES = ["en", "pt"] as const;
+type ValidLocale = (typeof VALID_LOCALES)[number];
+const DEFAULT_LOCALE: ValidLocale = "en";
+
+function sanitizeLocale(value: unknown): ValidLocale {
+  if (
+    typeof value === "string" &&
+    VALID_LOCALES.includes(value as ValidLocale)
+  ) {
+    return value as ValidLocale;
+  }
+  return DEFAULT_LOCALE;
+}
+
 const metadataDict = {
   pt: {
     title: "Claudinei Alves | Engenheiro de IA & Cientista de Dados",
@@ -53,7 +65,6 @@ const metadataDict = {
   },
 };
 
-// Viewport separado (melhor prática Next.js 15)
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -67,8 +78,8 @@ export const viewport: Viewport = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const cookieStore = await cookies();
-  const locale =
-    (cookieStore.get("portfolio-locale")?.value as "pt" | "en") || "en";
+  const rawLocale = cookieStore.get("portfolio-locale")?.value;
+  const locale = sanitizeLocale(rawLocale);
 
   const data = metadataDict[locale];
 
@@ -139,14 +150,13 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     verification: {
-      google: "seu-código-do-google-search-console",
+      google: "7wqyeqXdmhd8uuXTlIk4Gmu-bNZNeD4yCtUxmg9Hr4Y",
     },
     category: "technology",
   };
 }
 
-// JSON-LD Structured Data para SEO
-function generateStructuredData(locale: string) {
+function generateStructuredData(locale: ValidLocale) {
   const isPt = locale === "pt";
 
   return {
@@ -184,8 +194,8 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const cookieStore = await cookies();
-  const serverLocale =
-    (cookieStore.get("portfolio-locale")?.value as "pt" | "en") || "en";
+  const rawLocale = cookieStore.get("portfolio-locale")?.value;
+  const serverLocale = sanitizeLocale(rawLocale);
 
   const structuredData = generateStructuredData(serverLocale);
 
@@ -198,37 +208,43 @@ export default async function RootLayout({
       dir="ltr"
     >
       <head>
-        {/* Script inline para sincronizar idioma antes do React hidratar */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
+                  var VALID_LOCALES = ["en","pt"];
+                  var DEFAULT = "${serverLocale}";
+
                   var saved = localStorage.getItem("portfolio-locale");
                   var cookieMatch = document.cookie.match(/(?:^|; )portfolio-locale=([^;]*)/);
                   var cookie = cookieMatch ? decodeURIComponent(cookieMatch[1]) : null;
-                  var locale = saved || cookie || "${serverLocale}";
-                  if (locale === "pt" || locale === "en") {
-                    document.documentElement.lang = locale;
-                    document.documentElement.setAttribute("data-locale", locale);
+
+                  var locale = saved || cookie || DEFAULT;
+
+                  if (VALID_LOCALES.indexOf(locale) === -1) {
+                    locale = DEFAULT;
                   }
-                } catch(e) {}
+
+                  document.documentElement.lang = locale;
+                  document.documentElement.setAttribute("data-locale", locale);
+                } catch(e) {
+                  document.documentElement.lang = "${serverLocale}";
+                  document.documentElement.setAttribute("data-locale", "${serverLocale}");
+                }
               })();
             `,
           }}
         />
 
-        {/* Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
 
-        {/* Preconnect para performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
-        {/* Meta adicionais para PWA e mobile */}
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -241,13 +257,12 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-bg-primary text-content-primary min-h-screen`}
       >
-        <LanguageProvider>
+        <LanguageProvider initialLocale={serverLocale}>
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
 
-            {/* Utilitários de UI */}
             <ScrollToTopButton />
             <AccessibilityToggle />
           </div>
