@@ -17,6 +17,18 @@ function sanitizeLocale(value: unknown): ValidLocale {
 }
 
 export function middleware(request: NextRequest) {
+  // ✅ Pula arquivos estáticos e API diretamente no código (mais confiável que regex)
+  const pathname = request.nextUrl.pathname;
+  if (
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname === "/favicon.ico" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt"
+  ) {
+    return NextResponse.next();
+  }
+
   const response = NextResponse.next();
 
   // Headers de segurança obrigatórios
@@ -28,6 +40,7 @@ export function middleware(request: NextRequest) {
     "camera=(), microphone=(), geolocation=(), payment=()",
   );
 
+  // ✅ Cookie seguro HttpOnly + Secure + SameSite=Strict
   const currentLocale = request.cookies.get(COOKIE_NAME)?.value;
   const sanitizedLocale = sanitizeLocale(currentLocale);
 
@@ -44,8 +57,7 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
+// ✅ Matcher simplificado — aplica a TUDO, o filtro é feito no código acima
 export const config = {
-  matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
-  ],
+  matcher: ["/:path*"],
 };
