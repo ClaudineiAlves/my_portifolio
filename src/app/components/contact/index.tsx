@@ -4,11 +4,21 @@ import Link from "next/link";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
-import { personalData } from "@/../utils/Data/PersonalData";
 import ContactWithoutCaptcha from "./contact-without-captcha";
 import RevealText from "../RevealText";
 import { MapPin, Send, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+
+// ✅ Dados de contato via variáveis de ambiente (não expostos no GitHub)
+const CONTACT_DATA = {
+  email: process.env.NEXT_PUBLIC_EMAIL || "",
+  phone: process.env.NEXT_PUBLIC_PHONE || "",
+  address: process.env.NEXT_PUBLIC_ADDRESS || "",
+  github: process.env.NEXT_PUBLIC_GITHUB || "https://github.com/ClaudineiAlves",
+  linkedin:
+    process.env.NEXT_PUBLIC_LINKEDIN ||
+    "https://linkedin.com/in/claudinei-alves",
+} as const;
 
 interface ContactLinkProps {
   href: string;
@@ -107,24 +117,34 @@ function ContactSection() {
                 </h3>
                 <div className="flex flex-col gap-4">
                   <ContactInfoCard
-                    href={`mailto:${personalData.email}`}
+                    href={
+                      CONTACT_DATA.email ? `mailto:${CONTACT_DATA.email}` : "#"
+                    }
                     icon={MdAlternateEmail}
                     label="Email"
-                    value={personalData.email}
+                    value={
+                      CONTACT_DATA.email || t("contact.email_not_available")
+                    }
                     colorClass="text-primary-500"
                   />
                   <ContactInfoCard
-                    href={`tel:${personalData.phone}`}
+                    href={
+                      CONTACT_DATA.phone ? `tel:${CONTACT_DATA.phone}` : "#"
+                    }
                     icon={IoMdCall}
                     label={t("contact.phone_label")}
-                    value={personalData.phone}
+                    value={
+                      CONTACT_DATA.phone || t("contact.phone_not_available")
+                    }
                     colorClass="text-primary-600"
                   />
                   <ContactInfoCard
                     href="#"
                     icon={MapPin}
                     label={t("contact.location_label")}
-                    value={personalData.address}
+                    value={
+                      CONTACT_DATA.address || t("contact.address_not_available")
+                    }
                     colorClass="text-primary-700"
                   />
                 </div>
@@ -138,7 +158,7 @@ function ContactSection() {
                 </h3>
                 <div className="flex flex-wrap gap-4">
                   <Link
-                    href={personalData.github}
+                    href={CONTACT_DATA.github}
                     target="_blank"
                     className="w-14 h-14 rounded-2xl border border-bg-tertiary bg-bg-secondary flex items-center justify-center hover:bg-bg-tertiary hover:border-primary-500/30 hover:scale-110 hover:shadow-glow-sm transition-all duration-300 text-content-secondary hover:text-primary-400"
                     aria-label="GitHub"
@@ -146,7 +166,7 @@ function ContactSection() {
                     <IoLogoGithub className="w-6 h-6" />
                   </Link>
                   <Link
-                    href={personalData.linkedIn}
+                    href={CONTACT_DATA.linkedin}
                     target="_blank"
                     className="w-14 h-14 rounded-2xl border border-bg-tertiary bg-bg-secondary flex items-center justify-center hover:bg-bg-tertiary hover:border-primary-500/30 hover:scale-110 hover:shadow-glow-sm transition-all duration-300 text-content-secondary hover:text-primary-400"
                     aria-label="LinkedIn"
