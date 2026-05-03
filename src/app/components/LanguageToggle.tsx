@@ -2,18 +2,14 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// ✅ Nomes sem bandeiras (override local)
-const displayNames = {
-  en: "English",
-  pt: "Português",
-} as const;
-
 export function LanguageToggle() {
   const { locale, setLocale } = useLanguage();
 
   const toggle = () => {
     setLocale(locale === "en" ? "pt" : "en");
   };
+
+  const label = locale === "en" ? "English" : "Português";
 
   return (
     <button
@@ -22,7 +18,7 @@ export function LanguageToggle() {
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20
                  bg-white/10 hover:bg-white/20 transition-all text-sm font-medium"
     >
-      <span>{displayNames[locale]}</span>
+      <span>{label}</span>
     </button>
   );
 }
