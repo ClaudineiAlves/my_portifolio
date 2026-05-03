@@ -1,7 +1,12 @@
 "use client";
 
 import { useLanguage } from "@/contexts/LanguageContext";
-import { localeNames } from "@/i18n";
+
+// ✅ Nomes sem bandeiras (override local)
+const displayNames = {
+  en: "English",
+  pt: "Português",
+} as const;
 
 export function LanguageToggle() {
   const { locale, setLocale } = useLanguage();
@@ -17,7 +22,7 @@ export function LanguageToggle() {
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20
                  bg-white/10 hover:bg-white/20 transition-all text-sm font-medium"
     >
-      <span>{localeNames[locale]}</span>
+      <span>{displayNames[locale]}</span>
     </button>
   );
 }
