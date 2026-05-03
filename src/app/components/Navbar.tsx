@@ -7,13 +7,6 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { type Locale, localeNames } from "@/i18n";
-
-// Flags para cada idioma suportado
-const flags: Record<Locale, string> = {
-  en: "🇺🇸",
-  pt: "🇧🇷",
-};
 
 // Chaves de tradução para cada item da navbar
 const navItemKeys = [
@@ -32,6 +25,9 @@ function LanguageToggle() {
 
   const toggle = () => setLocale(locale === "en" ? "pt" : "en");
 
+  // ✅ Label sem bandeira — apenas código do idioma
+  const label = locale === "en" ? "EN" : "PT";
+
   return (
     <button
       onClick={toggle}
@@ -41,8 +37,7 @@ function LanguageToggle() {
                  transition-all duration-300 text-sm font-medium
                  text-content-secondary hover:text-primary-400 select-none"
     >
-      <span>{flags[locale]}</span>
-      <span className="hidden sm:inline">{localeNames[locale]}</span>
+      <span>{label}</span>
     </button>
   );
 }
