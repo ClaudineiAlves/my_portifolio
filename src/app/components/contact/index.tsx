@@ -4,7 +4,7 @@ import Link from "next/link";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
-import ContactWithoutCaptcha from "./contact-without-captcha";
+import ContactForm from "./contact-form";
 import RevealText from "../RevealText";
 import { MapPin, Send, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -102,7 +102,7 @@ function ContactSection() {
           <div className="lg:col-span-7">
             <RevealText direction="right" delay={300}>
               <div className="bg-bg-secondary/30 border border-bg-tertiary rounded-3xl p-8 shadow-card">
-                <ContactWithoutCaptcha />
+                <ContactForm />
               </div>
             </RevealText>
           </div>

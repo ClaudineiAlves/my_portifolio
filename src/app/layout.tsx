@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "@/../utils/ScrollToTopButton";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { RecaptchaProvider } from "./components/RecaptchaProvider";
 import AccessibilityToggle from "./components/AccessibilityToggle";
 
 const geistSans = localFont({
@@ -214,7 +215,7 @@ export default async function RootLayout({
               (function() {
                 try {
                   var VALID_LOCALES = ["en","pt"];
-                  var DEFAULT = "${serverLocale}";
+n                  var DEFAULT = "${serverLocale}";
 
                   var saved = localStorage.getItem("portfolio-locale");
                   var cookieMatch = document.cookie.match(/(?:^|; )portfolio-locale=([^;]*)/);
@@ -257,16 +258,18 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-bg-primary text-content-primary min-h-screen`}
       >
-        <LanguageProvider initialLocale={serverLocale}>
-          <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+        <RecaptchaProvider>
+          <LanguageProvider initialLocale={serverLocale}>
+            <div className="relative flex min-h-screen flex-col">
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
 
-            <ScrollToTopButton />
-            <AccessibilityToggle />
-          </div>
-        </LanguageProvider>
+              <ScrollToTopButton />
+              <AccessibilityToggle />
+            </div>
+          </LanguageProvider>
+        </RecaptchaProvider>
       </body>
     </html>
   );
