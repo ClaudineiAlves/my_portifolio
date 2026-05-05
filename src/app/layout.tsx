@@ -41,27 +41,27 @@ function sanitizeLocale(value: unknown): ValidLocale {
 
 const metadataDict = {
   pt: {
-    title: "Claudinei Alves | Engenheiro de IA & Cientista de Dados",
+    title: "Claudinei Alves Portfolio | Portfólio de IA & Cientista de Dados",
     description:
-      "Portfolio de Claudinei Alves — Desenvolvedor focado em Inteligência Artificial, Ciência de Dados e Engenharia de Software. Projetos com Python, Machine Learning e análise de dados aplicada a problemas reais.",
-    ogTitle: "Claudinei Alves | Portfolio de IA & Ciência de Dados",
+      "Portfolio de Claudinei Alves — Desenvolvedor focado em Inteligência Artificial, Ciência de Dados e Engenharia de Software. Projetos com Python, Machine Learning e análise de dados aplicada a problemas reais. Acesse claudineiportifolio.vercel.app",
+    ogTitle: "Claudinei Alves Portfolio | Portfólio de IA & Ciência de Dados",
     ogDescription:
       "Projetos em Inteligência Artificial, Ciência de Dados e Desenvolvimento de Software focados em resolver problemas reais com tecnologia.",
-    twitterTitle: "Claudinei Alves | Engenheiro de IA",
+    twitterTitle: "Claudinei Alves Portfolio | Engenheiro de IA",
     twitterDescription:
-      "Projetos de Inteligência Artificial, Machine Learning e desenvolvimento web moderno.",
+      "Projetos de Inteligência Artificial, Machine Learning e desenvolvimento web moderno. Portfólio de Claudinei Alves.",
     locale: "pt_BR",
   },
   en: {
-    title: "Claudinei Alves | AI Engineer & Data Scientist",
+    title: "Claudinei Alves Portfolio | AI Engineer & Data Scientist",
     description:
-      "Claudinei Alves' Portfolio — Developer focused on Artificial Intelligence, Data Science and Software Engineering. Projects with Python, Machine Learning and data analysis applied to real-world problems.",
-    ogTitle: "Claudinei Alves | AI & Data Science Portfolio",
+      "Claudinei Alves' Portfolio — Developer focused on Artificial Intelligence, Data Science and Software Engineering. Projects with Python, Machine Learning and data analysis applied to real-world problems. Visit claudineiportifolio.vercel.app",
+    ogTitle: "Claudinei Alves Portfolio | AI & Data Science Portfolio",
     ogDescription:
       "Projects in Artificial Intelligence, Data Science and Software Development focused on solving real problems with technology.",
-    twitterTitle: "Claudinei Alves | AI Engineer",
+    twitterTitle: "Claudinei Alves Portfolio | AI Engineer",
     twitterDescription:
-      "Projects in Artificial Intelligence, Machine Learning and modern web development.",
+      "Projects in Artificial Intelligence, Machine Learning and modern web development. Claudinei Alves Portfolio.",
     locale: "en_US",
   },
 };
