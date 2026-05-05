@@ -1,16 +1,28 @@
-import type { NextConfig } from "next";
-import withPWA from "@ducanh2912/next-pwa";
+import {
+  PHASE_DEVELOPMENT_SERVER,
+  PHASE_PRODUCTION_BUILD,
+} from "next/constants.js";
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
   images: {
-    unoptimized: true,
+    unoptimized: true, // necessário para static export
   },
   trailingSlash: true,
 };
 
-export default withPWA({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
-})(nextConfig);
+const nextConfigFunction = async (phase: string) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
+    const withPWA = (await import("@ducanh2912/next-pwa")).default({
+      dest: "public",
+      register: true,
+      // skipWaiting: true,  // ← REMOVIDO: não existe nesta versão
+      disable: phase === PHASE_DEVELOPMENT_SERVER,
+    });
+    return withPWA(nextConfig);
+  }
+  return nextConfig;
+};
+
+export default nextConfigFunction;
