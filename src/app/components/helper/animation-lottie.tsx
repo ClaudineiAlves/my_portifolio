@@ -1,9 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { AnimationLottieProps } from "@/Types/types";
-
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const AnimationLottie = ({
   animationPath,
@@ -11,8 +9,8 @@ const AnimationLottie = ({
 }: AnimationLottieProps) => {
   return (
     <div style={{ width }}>
-      <Lottie
-        animationData={animationPath}
+      <DotLottieReact
+        src={animationPath}
         loop
         autoplay
         style={{ width: "100%", height: "auto" }}

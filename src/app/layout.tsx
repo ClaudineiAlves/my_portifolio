@@ -9,6 +9,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { RecaptchaProvider } from "./components/RecaptchaProvider";
 import AccessibilityToggle from "./components/AccessibilityToggle";
 import SkipLink from "./components/SkipLink";
+import { RegisterSW } from "@/components/RegisterSW";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,7 +24,7 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
   display: "swap",
-  preload: false,
+  // ✅ Removido: preload: false é o padrão, declaração desnecessária
 });
 
 const VALID_LOCALES = ["en", "pt"] as const;
@@ -75,7 +76,8 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "#050505" },
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
   ],
-  colorScheme: "dark",
+  // ✅ "dark light" permite suporte a tema claro no futuro sem quebrar nada
+  colorScheme: "dark light",
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -216,7 +218,7 @@ export default async function RootLayout({
               (function() {
                 try {
                   var VALID_LOCALES = ["en","pt"];
-n                  var DEFAULT = "${serverLocale}";
+                  var DEFAULT = "${serverLocale}";
 
                   var saved = localStorage.getItem("portfolio-locale");
                   var cookieMatch = document.cookie.match(/(?:^|; )portfolio-locale=([^;]*)/);
@@ -259,6 +261,7 @@ n                  var DEFAULT = "${serverLocale}";
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-bg-primary text-content-primary min-h-screen`}
       >
+        <RegisterSW />
         <SkipLink />
         <RecaptchaProvider>
           <LanguageProvider initialLocale={serverLocale}>
@@ -268,7 +271,6 @@ n                  var DEFAULT = "${serverLocale}";
                 {children}
               </main>
               <Footer />
-
               <ScrollToTopButton />
               <AccessibilityToggle />
             </div>

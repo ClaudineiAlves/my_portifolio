@@ -10,7 +10,13 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      // ✅ Padding responsivo por breakpoint — antes era fixo em "1rem" para todos
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
+        xl: "3rem",
+      },
     },
 
     extend: {
@@ -33,7 +39,6 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          // Adicionando tons extras do vermelho refinado
           50: "var(--primary-50)",
           100: "var(--primary-100)",
           200: "var(--primary-200)",
@@ -72,8 +77,7 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
 
-        // NOVAS CORES CUSTOMIZADAS
-        // Cores de fundo
+        // Cores de fundo customizadas
         bg: {
           primary: "var(--bg-primary)",
           secondary: "var(--bg-secondary)",
@@ -95,15 +99,18 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
 
-      // Adicionando shadows customizados
       boxShadow: {
-        "glow-sm": "0 0 10px rgba(239, 68, 68, 0.3)",
-        "glow-md": "0 0 20px rgba(239, 68, 68, 0.3)",
-        "glow-lg": "0 0 30px rgba(220, 38, 38, 0.5)",
+        // ✅ Sombras usando CSS variable em vez de rgba hardcoded
+        // Isso garante que se a cor primária mudar, as sombras acompanham
+        "glow-sm":
+          "0 0 10px color-mix(in srgb, var(--primary-500, #ef4444) 30%, transparent)",
+        "glow-md":
+          "0 0 20px color-mix(in srgb, var(--primary-500, #ef4444) 30%, transparent)",
+        "glow-lg":
+          "0 0 30px color-mix(in srgb, var(--primary-600, #dc2626) 50%, transparent)",
         card: "0 4px 20px rgba(0, 0, 0, 0.4)",
       },
 
-      // Adicionando backgrounds customizados
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "hero-gradient":
@@ -111,7 +118,6 @@ export default {
         "gradient-red": "linear-gradient(to right, #f87171, #dc2626)",
       },
 
-      // Animações customizadas
       animation: {
         "fade-in": "fadeIn 0.5s ease-out",
         "slide-up": "slideUp 0.5s ease-out",
@@ -130,5 +136,7 @@ export default {
       },
     },
   },
+  // ✅ tailwindcss-animate mantido — fornece utilities como animate-in, fade-in, slide-in
+  // que complementam os keyframes customizados acima
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
