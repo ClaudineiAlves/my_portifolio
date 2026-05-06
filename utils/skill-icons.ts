@@ -30,7 +30,6 @@ import {
   SiSqlite,
   SiPostgresql,
   SiOpenjdk,
-  SiAws,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -43,7 +42,8 @@ const SVG_PATHS = {
   illustrator: "/svg/skills/illustrator.svg",
   photoshop: "/svg/skills/photoshop.svg",
   matplotlib: "/svg/skills/matplotlib.svg",
-  azure: "/svg/skills/azure.svg", // ← adicionar
+  azure: "/svg/skills/azure.svg",
+  aws: "/svg/skills/aws.svg",
 } as const;
 
 export type SkillIcon =
@@ -69,7 +69,13 @@ export const getSkillIcon = (skill: string): SkillIcon => {
     case "photoshop":
       return { type: "svg", path: SVG_PATHS.photoshop };
     case "matplotlib":
-      return { type: "svg", path: SVG_PATHS.matplotlib }; // ← SVG próprio
+      return { type: "svg", path: SVG_PATHS.matplotlib };
+    case "azure":
+    case "microsoftazure":
+      return { type: "svg", path: SVG_PATHS.azure };
+    case "aws":
+    case "amazonwebservices":
+      return { type: "svg", path: SVG_PATHS.aws };
   }
 
   switch (skillLower) {
@@ -131,12 +137,6 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "icon", component: SiPytorch };
     case "docker":
       return { type: "icon", component: SiDocker };
-    case "aws":
-    case "amazonwebservices":
-      return { type: "icon", component: SiAws };
-    case "azure":
-    case "microsoftazure":
-      return { type: "svg", path: SVG_PATHS.azure }; // ← SVG customizado
     case "googlecloud":
     case "gcp":
       return { type: "icon", component: SiGooglecloud };
@@ -148,10 +148,111 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "icon", component: SiCanva };
     case "unity":
       return { type: "icon", component: SiUnity };
-    case "java":
     case "openjdk":
       return { type: "icon", component: SiOpenjdk };
     default:
       return { type: "icon", component: SiFreelancer };
+  }
+};
+
+export const getSkillColor = (skill: string): string => {
+  const skillLower = skill.toLowerCase().replace(/[-\s]/g, "");
+
+  switch (skillLower) {
+    case "html":
+    case "html5":
+      return "#E34F26";
+    case "css":
+    case "css3":
+      return "#1572B6";
+    case "javascript":
+    case "js":
+      return "#F7DF1E";
+    case "typescript":
+    case "ts":
+      return "#3178C6";
+    case "react":
+      return "#61DAFB";
+    case "nextjs":
+    case "next.js":
+      return "#FFFFFF";
+    case "tailwind":
+    case "tailwindcss":
+      return "#06B6D4";
+    case "nodejs":
+    case "node.js":
+      return "#339933";
+    case "bootstrap":
+      return "#7952B3";
+    case "mui":
+    case "materialui":
+      return "#007FFF";
+    case "python":
+      return "#3776AB";
+    case "java":
+      return "#ED8B00";
+    case "flask":
+      return "#FFFFFF";
+    case "django":
+      return "#092E20";
+    case "mongodb":
+      return "#47A248";
+    case "mysql":
+      return "#4479A1";
+    case "postgresql":
+    case "postgres":
+      return "#4169E1";
+    case "sqlite":
+      return "#003B57";
+    case "firebase":
+      return "#FFCA28";
+    case "supabase":
+      return "#3ECF8E";
+    case "docker":
+      return "#2496ED";
+    case "git":
+      return "#F05032";
+    case "figma":
+      return "#F24E1E";
+    case "canva":
+      return "#00C4CC";
+    case "aws":
+    case "amazonwebservices":
+      return "#FF9900";
+    case "azure":
+    case "microsoftazure":
+      return "#0078D4";
+    case "googlecloud":
+    case "gcp":
+      return "#4285F4";
+    case "tensorflow":
+      return "#FF6F00";
+    case "keras":
+      return "#D00000";
+    case "pytorch":
+      return "#EE4C2C";
+    case "scikitlearn":
+    case "sklearn":
+      return "#F7931E";
+    case "pandas":
+      return "#150458";
+    case "numpy":
+      return "#013243";
+    case "seaborn":
+      return "#4C72B0";
+    case "matplotlib":
+      return "#11557C";
+    case "linux":
+      return "#FCC624";
+    case "unity":
+      return "#FFFFFF";
+    case "openjdk":
+      return "#ED8B00";
+    case "illustrator":
+      return "#FF9A00";
+    case "photoshop":
+      return "#31A8FF";
+    default:
+      return "#6B7280";
   }
 };
