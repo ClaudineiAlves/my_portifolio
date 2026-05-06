@@ -8,6 +8,7 @@ import ScrollToTopButton from "@/../utils/ScrollToTopButton";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { RecaptchaProvider } from "./components/RecaptchaProvider";
 import AccessibilityToggle from "./components/AccessibilityToggle";
+import SkipLink from "./components/SkipLink";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -258,11 +259,14 @@ n                  var DEFAULT = "${serverLocale}";
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-bg-primary text-content-primary min-h-screen`}
       >
+        <SkipLink />
         <RecaptchaProvider>
           <LanguageProvider initialLocale={serverLocale}>
             <div className="relative flex min-h-screen flex-col">
               <Navbar />
-              <main className="flex-1">{children}</main>
+              <main id="main-content" className="flex-1">
+                {children}
+              </main>
               <Footer />
 
               <ScrollToTopButton />

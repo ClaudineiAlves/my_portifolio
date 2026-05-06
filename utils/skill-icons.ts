@@ -1,6 +1,6 @@
 import {
   SiHtml5,
-  SiCss, // ← CORRIGIDO: era SiCss3
+  SiCss,
   SiJavascript,
   SiTypescript,
   SiReact,
@@ -40,8 +40,10 @@ const SVG_PATHS = {
   flask: "/svg/skills/flask.svg",
   seaborn: "/svg/skills/seaborn.svg",
   linux: "/svg/skills/linux.svg",
-  illustrator: "/svg/skills/illustrator.svg", // ← adicione SVG custom
-  photoshop: "/svg/skills/photoshop.svg", // ← adicione SVG custom
+  illustrator: "/svg/skills/illustrator.svg",
+  photoshop: "/svg/skills/photoshop.svg",
+  matplotlib: "/svg/skills/matplotlib.svg",
+  azure: "/svg/skills/azure.svg", // ← adicionar
 } as const;
 
 export type SkillIcon =
@@ -66,6 +68,8 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "svg", path: SVG_PATHS.illustrator };
     case "photoshop":
       return { type: "svg", path: SVG_PATHS.photoshop };
+    case "matplotlib":
+      return { type: "svg", path: SVG_PATHS.matplotlib }; // ← SVG próprio
   }
 
   switch (skillLower) {
@@ -74,7 +78,7 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "icon", component: SiHtml5 };
     case "css":
     case "css3":
-      return { type: "icon", component: SiCss }; // ← SiCss
+      return { type: "icon", component: SiCss };
     case "javascript":
     case "js":
       return { type: "icon", component: SiJavascript };
@@ -116,8 +120,6 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "icon", component: SiPandas };
     case "numpy":
       return { type: "icon", component: SiNumpy };
-    case "matplotlib":
-      return { type: "icon", component: SiNumpy };
     case "scikitlearn":
     case "sklearn":
       return { type: "icon", component: SiScikitlearn };
@@ -131,9 +133,10 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "icon", component: SiDocker };
     case "aws":
     case "amazonwebservices":
-      return { type: "icon", component: SiAws }; // ← SiAws
+      return { type: "icon", component: SiAws };
     case "azure":
-      return { type: "icon", component: SiOpenjdk };
+    case "microsoftazure":
+      return { type: "svg", path: SVG_PATHS.azure }; // ← SVG customizado
     case "googlecloud":
     case "gcp":
       return { type: "icon", component: SiGooglecloud };
@@ -145,6 +148,9 @@ export const getSkillIcon = (skill: string): SkillIcon => {
       return { type: "icon", component: SiCanva };
     case "unity":
       return { type: "icon", component: SiUnity };
+    case "java":
+    case "openjdk":
+      return { type: "icon", component: SiOpenjdk };
     default:
       return { type: "icon", component: SiFreelancer };
   }

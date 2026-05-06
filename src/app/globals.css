@@ -679,3 +679,93 @@
   white-space: nowrap;
   border-width: 0;
 }
+/* ============================================
+   ACESSIBILIDADE - Accessibility Settings
+   ============================================ */
+
+/* Alto contraste */
+.high-contrast {
+  --bg-primary: #000000 !important;
+  --bg-secondary: #1a1a1a !important;
+  --bg-tertiary: #333333 !important;
+  --content-primary: #ffffff !important;
+  --content-secondary: #ffff00 !important;
+  --content-subtle: #00ffff !important;
+  --primary-500: #ffff00 !important;
+  --primary-400: #00ffff !important;
+}
+
+.high-contrast img {
+  filter: contrast(1.2);
+}
+
+.high-contrast * {
+  border-color: #ffffff !important;
+}
+
+/* Texto grande */
+.large-text {
+  font-size: 120%;
+}
+
+.large-text h1,
+.large-text h2,
+.large-text h3 {
+  font-size: 130%;
+}
+
+.large-text p,
+.large-text span,
+.large-text a {
+  font-size: 115%;
+}
+
+/* Reduzir motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Respeitar prefers-reduced-motion do sistema */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link para navegação por teclado */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-500);
+  color: #000;
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus indicators visíveis */
+:focus-visible {
+  outline: 3px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* Alto contraste para focus */
+.high-contrast :focus-visible {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+}
