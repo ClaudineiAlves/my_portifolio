@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
+
 const ipRequests = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {
@@ -38,9 +39,15 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   }
 }
 
+// Sanitiza strings para evitar injeção de conteúdo no template do EmailJS
+function sanitize(str: string): string {
+  return str.replace(/[<>]/g, "").trim();
+}
+
 export async function POST(request: NextRequest) {
   try {
     const ip = getClientIp(request);
+
     if (isRateLimited(ip)) {
       return NextResponse.json(
         { error: "Muitas requisições" },
@@ -77,6 +84,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Verifica se as variáveis de ambiente obrigatórias estão definidas
+    if (
+      !process.env.EMAILJS_SERVICE_ID ||
+      !process.env.EMAILJS_TEMPLATE_ID ||
+      !process.env.EMAILJS_PRIVATE_KEY // ✅ Private Key — nunca exposta no cliente
+    ) {
+      console.error("[API /contact] Variáveis de ambiente do EmailJS ausentes");
+      return NextResponse.json(
+        { error: "Erro de configuração" },
+        { status: 500 },
+      );
+    }
+
     const emailjsResponse = await fetch(
       "https://api.emailjs.com/api/v1.0/email/send",
       {
@@ -85,12 +105,12 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           service_id: process.env.EMAILJS_SERVICE_ID,
           template_id: process.env.EMAILJS_TEMPLATE_ID,
-          user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+          user_id: process.env.EMAILJS_PRIVATE_KEY, // ✅ Corrigido: era NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
           template_params: {
-            from_name: name,
-            from_email: email,
-            message,
-            reply_to: email,
+            from_name: sanitize(name), // ✅ Sanitizado
+            from_email: sanitize(email), // ✅ Sanitizado
+            message: sanitize(message), // ✅ Sanitizado
+            reply_to: sanitize(email),
           },
         }),
       },

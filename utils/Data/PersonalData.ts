@@ -7,7 +7,7 @@ export const personalData = {
   name: "Claudinei",
   profile: "/pic3.jpg",
   email: "alvesreis.dev@gmail.com",
-  phone: "+55 (19) 982019713",
+  phone: "+55 (19) 98801-8183",
   address: "Campinas-SP/Brasil",
   github: "https://github.com/ClaudineiAlves",
   facebook: "",
