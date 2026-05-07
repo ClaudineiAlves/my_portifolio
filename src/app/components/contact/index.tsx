@@ -17,7 +17,7 @@ const CONTACT_DATA = {
   github: process.env.NEXT_PUBLIC_GITHUB || "https://github.com/ClaudineiAlves",
   linkedin:
     process.env.NEXT_PUBLIC_LINKEDIN ||
-    "https://linkedin.com/in/claudinei-alves",
+    "https://www.linkedin.com/in/claudinei-alves-reis/",
 } as const;
 
 interface ContactLinkProps {

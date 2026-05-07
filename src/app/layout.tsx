@@ -173,7 +173,7 @@ function generateStructuredData(locale: ValidLocale) {
     url: "https://claudineiportifolio.vercel.app",
     sameAs: [
       "https://github.com/ClaudineiAlves",
-      "https://linkedin.com/in/claudinei-alves",
+      "https://www.linkedin.com/in/claudinei-alves-reis/",
     ],
     knowsAbout: [
       "Artificial Intelligence",
