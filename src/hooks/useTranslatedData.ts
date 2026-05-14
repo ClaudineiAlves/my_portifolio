@@ -1,5 +1,6 @@
 // src/hooks/useTranslatedData.ts
 import { useLanguage } from "../contexts/LanguageContext";
+import { projectsData } from "@/../utils/Data/projects-data";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -166,28 +167,28 @@ export function useCertificates(): CertificateItem[] {
 export function useProjects(): ProjectItem[] {
   const { t } = useLanguage();
 
-  return Array.from({ length: 7 }, (_, i) => {
-    const n = (i + 1).toString();
+  return projectsData.map((proj) => {
+    const n = proj.id.toString();
     return {
-      id: i + 1,
-      name: t(`projects.items.${n}.name`),
-      description: t(`projects.items.${n}.description`),
-      role: t(`projects.items.${n}.role`),
-      tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
-      code: "https://github.com/seu-usuario/seu-projeto",
-      demo: "https://link-do-deploy.com",
-      date: "AAAA-MM-DD",
-      images: [],
-      videos: [],
+      id: proj.id,
+      name: t(`projects.items.${n}.name`) || proj.name,
+      description: t(`projects.items.${n}.description`) || proj.description,
+      role: t(`projects.items.${n}.role`) || proj.role,
+      tools: proj.tools,
+      code: proj.code,
+      demo: proj.demo,
+      date: proj.date,
+      images: proj.images,
+      videos: proj.videos,
       highlights: [
         t(`projects.items.${n}.highlight_1`),
         t(`projects.items.${n}.highlight_2`),
         t(`projects.items.${n}.highlight_3`),
-      ],
+      ].filter(Boolean),
       challenges: [
         t(`projects.items.${n}.challenge_1`),
         t(`projects.items.${n}.challenge_2`),
-      ],
+      ].filter(Boolean),
     };
   });
 }

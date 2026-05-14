@@ -92,14 +92,14 @@
     "view_all": "View All Projects",
     "items": {
       "1": {
-        "name": "Project Name",
-        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
-        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
-        "highlight_1": "An important feature or characteristic of the project.",
-        "highlight_2": "Another relevant implementation highlight.",
-        "highlight_3": "An interesting technology or architecture used.",
-        "challenge_1": "Main technical challenge faced during development.",
-        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+        "name": "Personal Portfolio",
+        "description": "Modern, responsive personal portfolio with bilingual support (EN/PT), dark theme, smooth animations, and a secure contact form powered by EmailJS and reCAPTCHA v3.",
+        "role": "Full-Stack Developer",
+        "highlight_1": "Custom i18n system using React Context API — bilingual EN/PT support with no external libraries.",
+        "highlight_2": "Dark theme built with CSS custom properties and Tailwind CSS for consistent, maintainable styling.",
+        "highlight_3": "Contact form with server-side EmailJS integration and reCAPTCHA v3 to block spam submissions.",
+        "challenge_1": "Implementing nested dot-notation key resolution for the i18n system without the overhead of libraries like next-intl.",
+        "challenge_2": "Achieving high Lighthouse scores through lazy loading, font preloading, and animation optimization."
       },
       "2": {
         "name": "Project Name",
@@ -195,21 +195,28 @@
     "title_word1": "Let's",
     "title_word2": "Talk",
     "subtitle": "Have a project in mind or just want to say hello? I'm always open to discussing new opportunities and creative ideas.",
-    "form_title": "Send a Message",
-    "form_response_time": "I'll respond to your message within 24 hours.",
-    "name_label": "Your Name",
-    "email_label": "Your Email",
-    "message_label": "Your Message",
-    "message_placeholder": "Tell me about your project...",
-    "submit": "Send Message",
+    "form": {
+      "name": "Your Name",
+      "name_placeholder": "John Doe",
+      "email": "Your Email",
+      "email_placeholder": "john@example.com",
+      "message": "Your Message",
+      "message_placeholder": "Tell me about your project...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "An unexpected error occurred. Please try again."
+    },
     "direct_title": "Direct Contact",
     "social_title": "Social Media",
     "phone_label": "Phone",
     "location_label": "Location",
-    "error_invalid_email": "Please enter a valid email address.",
-    "error_required": "Oops! Some fields are still empty.",
-    "toast_success": "Message sent successfully!",
-    "toast_error": "An unexpected error occurred."
+    "email_not_available": "Email not available",
+    "phone_not_available": "Phone not available",
+    "address_not_available": "Location not available"
+  },
+  "experience": {
+    "title": "Professional Journey"
   },
   "footer": {
     "description": "Developer specialized in Data Science and Artificial Intelligence, dedicated to building intelligent, high-performance digital solutions using modern technologies.",

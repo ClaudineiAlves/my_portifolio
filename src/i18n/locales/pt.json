@@ -92,14 +92,14 @@
     "view_all": "Ver Todos os Projetos",
     "items": {
       "1": {
-        "name": "Nome do Projeto",
-        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
-        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
-        "highlight_1": "Funcionalidade ou característica importante do projeto.",
-        "highlight_2": "Outro destaque relevante da implementação.",
-        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
-        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
-        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+        "name": "Portfólio Pessoal",
+        "description": "Portfólio pessoal moderno e responsivo com suporte bilíngue (EN/PT), tema escuro, animações suaves e formulário de contato seguro com EmailJS e reCAPTCHA v3.",
+        "role": "Desenvolvedor Full-Stack",
+        "highlight_1": "Sistema i18n customizado com React Context API — suporte bilíngue EN/PT sem bibliotecas externas.",
+        "highlight_2": "Tema escuro com CSS variables customizadas e Tailwind CSS para estilização consistente e manutenível.",
+        "highlight_3": "Formulário de contato com integração server-side do EmailJS e reCAPTCHA v3 para bloqueio de spam.",
+        "challenge_1": "Implementar resolução de chaves aninhadas em dot-notation para o sistema i18n sem o overhead de bibliotecas como next-intl.",
+        "challenge_2": "Alcançar pontuações altas no Lighthouse com lazy loading, pré-carregamento de fontes e otimização de animações."
       },
       "2": {
         "name": "Nome do Projeto",
@@ -195,21 +195,28 @@
     "title_word1": "Vamos",
     "title_word2": "Conversar",
     "subtitle": "Tem um projeto em mente ou apenas quer dizer olá? Estou sempre aberto a discutir novas oportunidades e ideias criativas.",
-    "form_title": "Enviar Mensagem",
-    "form_response_time": "Responderei sua mensagem em até 24 horas.",
-    "name_label": "Seu Nome",
-    "email_label": "Seu Email",
-    "message_label": "Sua Mensagem",
-    "message_placeholder": "Conte-me sobre seu projeto...",
-    "submit": "Enviar Mensagem",
+    "form": {
+      "name": "Seu Nome",
+      "name_placeholder": "João Silva",
+      "email": "Seu Email",
+      "email_placeholder": "joao@exemplo.com",
+      "message": "Sua Mensagem",
+      "message_placeholder": "Conte-me sobre seu projeto...",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Ocorreu um erro inesperado. Tente novamente."
+    },
     "direct_title": "Contato Direto",
     "social_title": "Redes Sociais",
     "phone_label": "Telefone",
     "location_label": "Localização",
-    "error_invalid_email": "Por favor, insira um endereço de email válido.",
-    "error_required": "Ops! Parece que alguns campos ainda estão vazios.",
-    "toast_success": "Mensagem enviada com sucesso!",
-    "toast_error": "Ocorreu um erro inesperado."
+    "email_not_available": "Email não disponível",
+    "phone_not_available": "Telefone não disponível",
+    "address_not_available": "Localização não disponível"
+  },
+  "experience": {
+    "title": "Trajetória Profissional"
   },
   "footer": {
     "description": "Desenvolvedor especializado em Ciência de Dados e Inteligência Artificial, dedicado à criação de soluções digitais inteligentes e de alto desempenho por meio de tecnologias modernas.",

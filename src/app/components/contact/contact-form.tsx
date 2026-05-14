@@ -20,7 +20,6 @@ export default function ContactForm() {
   const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const executeRecaptcha = useCallback(async (): Promise<string | null> => {
     const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
@@ -44,17 +43,12 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus("idle");
-    setErrorMessage("");
 
     try {
-      // Executa reCAPTCHA v3
       const recaptchaToken = await executeRecaptcha();
 
       if (!recaptchaToken) {
         setStatus("error");
-        setErrorMessage(
-          "Erro de verificação de segurança. Recarregue a página.",
-        );
         return;
       }
 
@@ -72,18 +66,16 @@ export default function ContactForm() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      await response.json();
 
       if (response.ok) {
         setStatus("success");
         e.currentTarget.reset();
       } else {
         setStatus("error");
-        setErrorMessage(result.error || "Erro ao enviar mensagem");
       }
     } catch (error) {
       setStatus("error");
-      setErrorMessage("Erro de conexão. Tente novamente.");
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -170,7 +162,7 @@ export default function ContactForm() {
 
       {status === "error" && (
         <p className="text-sm text-red-400 text-center">
-          {errorMessage || t("contact.form.error")}
+          {t("contact.form.error")}
         </p>
       )}
     </form>

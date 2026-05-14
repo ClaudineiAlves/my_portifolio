@@ -12,12 +12,15 @@ import { ProjectCardProps } from "@/Types/types";
 import { ChevronUp, Code, ExternalLink, Globe, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { MouseEvent, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { t } = useLanguage();
   const firstImage = project.images?.[0];
   const [showAllTags, setShowAllTags] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isNew, setIsNew] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const maxVisibleTags = 5;
@@ -26,6 +29,19 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     ? project.tools
     : project.tools.slice(0, maxVisibleTags);
 
+  // Computed client-side only to avoid hydration mismatch with Date.now()
+  useEffect(() => {
+    if (!project.date) return;
+    try {
+      const projectDate = new Date(project.date);
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      setIsNew(projectDate >= oneMonthAgo && projectDate <= new Date());
+    } catch {
+      setIsNew(false);
+    }
+  }, [project.date]);
+
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -33,22 +49,6 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
     });
-  };
-
-  // Helper function to check if project is less than a month old
-  const isNewProject = (dateString: string) => {
-    if (!dateString) return false;
-
-    try {
-      const projectDate = new Date(dateString);
-      const currentDate = new Date();
-      const oneMonthAgo = new Date();
-      oneMonthAgo.setMonth(currentDate.getMonth() - 1);
-
-      return projectDate >= oneMonthAgo && projectDate <= currentDate;
-    } catch {
-      return false;
-    }
   };
 
   return (
@@ -97,7 +97,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-bg-primary to-transparent opacity-80" />
 
-            {isNewProject(project.date) && (
+            {isNew && (
               <div className="absolute top-4 right-4 bg-gradient-to-r from-primary-600 to-primary-900 text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-glow-sm animate-pulse z-10 border border-primary-500/20">
                 <Sparkles className="w-3 h-3 text-white" />
                 <span className="text-[10px] font-bold tracking-wider">
@@ -162,7 +162,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               disabled={!project.demo}
             >
               <Globe className="w-4 h-4" />
-              Demonstração
+              {t("projects.demo")}
             </Button>
           </Link>
           <Link href={project.code || "#"} target="_blank" className="flex-1">
@@ -175,7 +175,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               disabled={!project.code}
             >
               <Code className="w-4 h-4" />
-              Código
+              {t("projects.code")}
             </Button>
           </Link>
         </CardFooter>

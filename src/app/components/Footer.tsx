@@ -117,8 +117,9 @@ const Footer = () => {
         {/* Divider & Copyright */}
         <div className="mt-16 pt-8 border-t border-bg-tertiary flex flex-col md:flex-row justify-between items-center gap-4 text-caption text-content-subtle">
           <p>
-            &copy; {new Date().getFullYear()} Claudinei Alves.{" "}
-            {t("footer.rights")}
+            &copy;{" "}
+            <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
+            Claudinei Alves. {t("footer.rights")}
           </p>
           <p className="flex items-center gap-2">
             {t("footer.made_with")}{" "}

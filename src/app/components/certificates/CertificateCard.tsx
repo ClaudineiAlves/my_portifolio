@@ -5,12 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Certificate } from "./types";
 import { Calendar, Clock, Award, ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CertificateCardProps {
   certificate: Certificate;
 }
 
 export default function CertificateCard({ certificate }: CertificateCardProps) {
+  const { t } = useLanguage();
+
   return (
     <Link
       href={`/certificado/${certificate.id}`}
@@ -69,7 +72,9 @@ export default function CertificateCard({ certificate }: CertificateCardProps) {
           {/* Data */}
           <div className="flex items-center gap-2 text-caption text-content-subtle">
             <Calendar size={14} className="flex-shrink-0" />
-            <span>Concluído em {certificate.date}</span>
+            <span>
+              {t("certificates.completed_in")} {certificate.date}
+            </span>
           </div>
 
           {/* Tags */}

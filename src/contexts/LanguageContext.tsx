@@ -84,22 +84,15 @@ export function LanguageProvider({
   children,
   initialLocale = defaultLocale,
 }: LanguageProviderProps) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof document !== "undefined") {
-      const htmlLocale = document.documentElement.getAttribute(
-        "data-locale",
-      ) as Locale | null;
-      if (htmlLocale && VALID_LOCALES.includes(htmlLocale)) return htmlLocale;
-
-      const langAttr = document.documentElement.lang as Locale | null;
-      if (langAttr && VALID_LOCALES.includes(langAttr)) return langAttr;
-    }
-    return sanitizeLocale(initialLocale);
-  });
+  // Always start with server locale so SSR and initial client render match
+  const [locale, setLocaleState] = useState<Locale>(
+    sanitizeLocale(initialLocale),
+  );
 
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    // Sync to user preference only after hydration is complete
     try {
       const savedLocal = localStorage.getItem("portfolio-locale");
       const savedCookie = getCookie("portfolio-locale");

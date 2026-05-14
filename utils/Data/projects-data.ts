@@ -1,38 +1,44 @@
 export const projectsData = [
   {
     id: 1,
-    name: "Nome do Projeto",
+    name: "Portfólio Pessoal",
     description:
-      "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+      "Portfólio pessoal moderno e responsivo com suporte bilíngue (EN/PT), tema escuro, animações suaves e formulário de contato seguro com EmailJS e reCAPTCHA v3.",
 
-    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
+    tools: [
+      "Next.js 14",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "EmailJS",
+      "reCAPTCHA v3",
+      "Vercel",
+    ],
 
-    role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
+    role: "Full-Stack Developer",
 
-    code: "https://github.com/seu-usuario/seu-projeto",
+    code: "https://github.com/ClaudineiAlves/my_portifolio",
 
-    demo: "https://link-do-deploy.com",
+    demo: "https://claudineiportifolio.vercel.app",
 
-    date: "AAAA-MM-DD",
+    date: "2026-05-11",
 
     images: [
-      //"/projects/nome-do-projeto/imagem-1.png",
-      //"/projects/nome-do-projeto/imagem-2.png",
+      //"/projects/portfolio/preview-home.png",
+      //"/projects/portfolio/preview-contact.png",
     ],
 
-    videos: [
-      //"/projects/nome-do-projeto/demo-video.mp4"
-    ],
+    videos: [],
 
     highlights: [
-      "Funcionalidade ou característica importante do projeto.",
-      "Outro destaque relevante da implementação.",
-      "Tecnologia ou arquitetura interessante utilizada.",
+      "Sistema i18n customizado com React Context API — suporte EN/PT sem bibliotecas externas.",
+      "Tema escuro com CSS variables e Tailwind CSS para estilização consistente e manutenível.",
+      "Formulário de contato com EmailJS (server-side) e reCAPTCHA v3 para proteção contra spam.",
     ],
 
     challenges: [
-      "Principal desafio técnico enfrentado durante o desenvolvimento.",
-      "Problema de arquitetura, performance ou integração que precisou ser resolvido.",
+      "Implementar resolução de chaves aninhadas em dot-notation para o sistema i18n sem overhead de bibliotecas como next-intl.",
+      "Otimizar o Lighthouse Score com lazy loading, pré-carregamento de fontes e animações eficientes.",
     ],
   },
   {
