@@ -102,14 +102,14 @@
         "challenge_2": "Alcançar pontuações altas no Lighthouse com lazy loading, pré-carregamento de fontes e otimização de animações."
       },
       "2": {
-        "name": "Nome do Projeto",
-        "description": "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
-        "role": "Seu papel no projeto (ex: Desenvolvedor Full-Stack, Desenvolvedor Frontend)",
-        "highlight_1": "Funcionalidade ou característica importante do projeto.",
-        "highlight_2": "Outro destaque relevante da implementação.",
-        "highlight_3": "Tecnologia ou arquitetura interessante utilizada.",
-        "challenge_1": "Principal desafio técnico enfrentado durante o desenvolvimento.",
-        "challenge_2": "Problema de arquitetura, performance ou integração que precisou ser resolvido."
+        "name": "Transparência BR API",
+        "description": "API REST async que agrega e expõe dados de transparência do governo federal brasileiro, consumindo o Portal da Transparência (CGU). Oferece endpoints para cartões corporativos, viagens a serviço, contratos e licitações, com paginação, filtros e cache em banco de dados PostgreSQL.",
+        "role": "Desenvolvedor Backend",
+        "highlight_1": "Arquitetura async end-to-end com FastAPI + asyncpg + SQLAlchemy 2, garantindo alto throughput sem bloqueio de I/O.",
+        "highlight_2": "Cliente HTTP com retry automático em 429 (rate limit) para consumo estável da API do Portal da Transparência.",
+        "highlight_3": "Endpoints versionados (/v1/*) com validação de parâmetros via Pydantic e documentação interativa automática (Swagger/ReDoc).",
+        "challenge_1": "Lidar com os limites e inconsistências da API pública do Portal da Transparência (CGU), implementando retry e tratamento de erros robusto.",
+        "challenge_2": "Modelar migrações de banco com Alembic em ambiente async, garantindo compatibilidade entre SQLAlchemy 2 e asyncpg."
       },
       "3": {
         "name": "Nome do Projeto",

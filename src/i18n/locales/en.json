@@ -102,14 +102,14 @@
         "challenge_2": "Achieving high Lighthouse scores through lazy loading, font preloading, and animation optimization."
       },
       "2": {
-        "name": "Project Name",
-        "description": "Brief project description. Explain what problem it solves, what the main features are, and what technology was used to build it.",
-        "role": "Your role in the project (e.g. Full-Stack Developer, Frontend Developer)",
-        "highlight_1": "An important feature or characteristic of the project.",
-        "highlight_2": "Another relevant implementation highlight.",
-        "highlight_3": "An interesting technology or architecture used.",
-        "challenge_1": "Main technical challenge faced during development.",
-        "challenge_2": "Architecture, performance, or integration problem that needed to be solved."
+        "name": "Transparência BR API",
+        "description": "Async REST API that aggregates and exposes Brazilian federal government transparency data, consuming the Portal da Transparência (CGU). Provides endpoints for corporate card spending, official travel, contracts, and bidding processes — with pagination, filters, and PostgreSQL caching.",
+        "role": "Backend Developer",
+        "highlight_1": "End-to-end async architecture with FastAPI + asyncpg + SQLAlchemy 2, ensuring high throughput without I/O blocking.",
+        "highlight_2": "HTTP client with automatic retry on 429 (rate limit) for stable consumption of the Portal da Transparência API.",
+        "highlight_3": "Versioned endpoints (/v1/*) with Pydantic parameter validation and automatic interactive documentation (Swagger/ReDoc).",
+        "challenge_1": "Handling the rate limits and inconsistencies of the CGU public API, implementing robust retry logic and error handling.",
+        "challenge_2": "Modeling Alembic database migrations in an async environment, ensuring compatibility between SQLAlchemy 2 and asyncpg."
       },
       "3": {
         "name": "Project Name",

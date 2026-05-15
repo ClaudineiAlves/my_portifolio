@@ -43,38 +43,42 @@ export const projectsData = [
   },
   {
     id: 2,
-    name: "Nome do Projeto",
+    name: "Transparência BR API",
     description:
-      "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
+      "API REST async que agrega e expõe dados de transparência do governo federal brasileiro, consumindo o Portal da Transparência (CGU). Oferece endpoints para cartões corporativos, viagens a serviço, contratos e licitações, com paginação, filtros e cache em banco de dados PostgreSQL.",
 
-    tools: ["Tecnologia 1", "Tecnologia 2", "Tecnologia 3", "Tecnologia 4"],
-
-    role: "Seu papel no projeto (ex: Full-Stack Developer, Frontend Developer)",
-
-    code: "https://github.com/seu-usuario/seu-projeto",
-
-    demo: "https://link-do-deploy.com",
-
-    date: "AAAA-MM-DD",
-
-    images: [
-      //"/projects/nome-do-projeto/imagem-1.png",
-      //"/projects/nome-do-projeto/imagem-2.png",
+    tools: [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Alembic",
+      "httpx",
+      "Docker",
+      "Railway",
     ],
 
-    videos: [
-      //"/projects/nome-do-projeto/demo-video.mp4"
-    ],
+    role: "Backend Developer",
+
+    code: "https://github.com/ClaudineiAlves/transparenciabr-api",
+
+    demo: "",
+
+    date: "2026-05-14",
+
+    images: [],
+
+    videos: [],
 
     highlights: [
-      "Funcionalidade ou característica importante do projeto.",
-      "Outro destaque relevante da implementação.",
-      "Tecnologia ou arquitetura interessante utilizada.",
+      "Arquitetura async end-to-end com FastAPI + asyncpg + SQLAlchemy 2, garantindo alto throughput sem bloqueio de I/O.",
+      "Cliente HTTP com retry automático em 429 (rate limit) para consumo estável da API do Portal da Transparência.",
+      "Endpoints versionados (/v1/*) com validação de parâmetros via Pydantic e documentação interativa automática (Swagger/ReDoc).",
     ],
 
     challenges: [
-      "Principal desafio técnico enfrentado durante o desenvolvimento.",
-      "Problema de arquitetura, performance ou integração que precisou ser resolvido.",
+      "Lidar com os limites e inconsistências da API pública do Portal da Transparência (CGU), implementando retry e tratamento de erros robusto.",
+      "Modelar migrações de banco com Alembic em ambiente async, garantindo compatibilidade entre SQLAlchemy 2 e asyncpg.",
     ],
   },
   {
