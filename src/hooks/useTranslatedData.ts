@@ -38,6 +38,7 @@ export interface ProjectItem {
   videos: string[];
   highlights: string[];
   challenges: string[];
+  published: boolean;
 }
 
 export interface PersonalTranslated {
@@ -180,6 +181,7 @@ export function useProjects(): ProjectItem[] {
       date: proj.date,
       images: proj.images,
       videos: proj.videos,
+      published: proj.published,
       highlights: [
         t(`projects.items.${n}.highlight_1`),
         t(`projects.items.${n}.highlight_2`),
