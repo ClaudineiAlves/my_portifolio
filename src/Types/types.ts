@@ -25,6 +25,7 @@ interface Project {
   date: string;
   images: string[];
   videos?: string[];
+  published: boolean;
 }
 
 export interface ProjectCardProps {

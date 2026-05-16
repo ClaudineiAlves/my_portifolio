@@ -17,11 +17,18 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const { t } = useLanguage();
-  const firstImage = project.images?.[0];
   const [showAllTags, setShowAllTags] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isNew, setIsNew] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Defer image rendering to client to keep SSR/client HTML identical
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const firstImage = mounted ? project.images?.[0] : undefined;
 
   const maxVisibleTags = 5;
   const hasMoreTags = project.tools.length > maxVisibleTags;

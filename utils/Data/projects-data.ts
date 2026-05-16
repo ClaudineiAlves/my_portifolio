@@ -1,6 +1,7 @@
-export const projectsData = [
+const allProjects = [
   {
     id: 1,
+    published: true,
     name: "Portfólio Pessoal",
     description:
       "Portfólio pessoal moderno e responsivo com suporte bilíngue (EN/PT), tema escuro, animações suaves e formulário de contato seguro com EmailJS e reCAPTCHA v3.",
@@ -24,8 +25,8 @@ export const projectsData = [
     date: "2026-05-11",
 
     images: [
-      //"/projects/portfolio/preview-home.png",
-      //"/projects/portfolio/preview-contact.png",
+      "/projects/portfolio/preview-home.png",
+      "/projects/portfolio/preview-contact.png",
     ],
 
     videos: [],
@@ -43,6 +44,7 @@ export const projectsData = [
   },
   {
     id: 2,
+    published: true,
     name: "Transparência BR API",
     description:
       "API REST async que agrega e expõe dados de transparência do governo federal brasileiro, consumindo o Portal da Transparência (CGU). Oferece endpoints para cartões corporativos, viagens a serviço, contratos e licitações, com paginação, filtros e cache em banco de dados PostgreSQL.",
@@ -62,11 +64,16 @@ export const projectsData = [
 
     code: "https://github.com/ClaudineiAlves/transparenciabr-api",
 
-    demo: "",
+    demo: "https://transparenciabr-api-production.up.railway.app/",
 
     date: "2026-05-14",
 
-    images: [],
+    images: [
+      "/projects/transparenciabr_api/preview_cards.png",
+      "/projects/transparenciabr_api/preview_bidding.png",
+      "/projects/transparenciabr_api/preview_contracts.png",
+      "/projects/transparenciabr_api/preview_vacations.png",
+    ],
 
     videos: [],
 
@@ -81,8 +88,16 @@ export const projectsData = [
       "Modelar migrações de banco com Alembic em ambiente async, garantindo compatibilidade entre SQLAlchemy 2 e asyncpg.",
     ],
   },
+  // ─── PROJETOS PENDENTES ────────────────────────────────────────────────────
+  // Os itens abaixo são placeholders para projetos futuros.
+  // Para adicionar um projeto real:
+  //   1. Preencha todos os campos (name, description, tools, role, code, demo, date).
+  //   2. Coloque as imagens em public/projects/<nome-do-projeto>/.
+  //   3. Descomente e ajuste os caminhos em `images` e `videos`.
+  // ───────────────────────────────────────────────────────────────────────────
   {
     id: 3,
+    published: false, // TODO: substituir pelo próximo projeto real
     name: "Nome do Projeto",
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
@@ -119,6 +134,7 @@ export const projectsData = [
   },
   {
     id: 4,
+    published: false, // TODO: substituir pelo próximo projeto real
     name: "Nome do Projeto",
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
@@ -155,6 +171,7 @@ export const projectsData = [
   },
   {
     id: 5,
+    published: false, // TODO: substituir pelo próximo projeto real
     name: "Nome do Projeto",
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
@@ -191,6 +208,7 @@ export const projectsData = [
   },
   {
     id: 6,
+    published: false, // TODO: substituir pelo próximo projeto real
     name: "Nome do Projeto",
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
@@ -227,6 +245,7 @@ export const projectsData = [
   },
   {
     id: 7,
+    published: false, // TODO: substituir pelo próximo projeto real
     name: "Nome do Projeto",
     description:
       "Breve descrição do projeto. Explique qual problema ele resolve, quais são as principais funcionalidades e qual tecnologia foi utilizada para desenvolvê-lo.",
@@ -262,3 +281,5 @@ export const projectsData = [
     ],
   },
 ];
+
+export const projectsData = allProjects.filter((p) => p.published);

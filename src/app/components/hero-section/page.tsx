@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/dist/SplitText";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
@@ -23,6 +23,21 @@ const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const designationRef = useRef<HTMLElement>(null);
   const codeCardRef = useRef<HTMLDivElement>(null);
+  const resumeDropdownRef = useRef<HTMLDivElement>(null);
+  const [resumeOpen, setResumeOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        resumeDropdownRef.current &&
+        !resumeDropdownRef.current.contains(e.target as Node)
+      ) {
+        setResumeOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useGSAP(
     () => {
@@ -336,14 +351,39 @@ const HeroSection = () => {
                 </span>
               </Link>
 
-              <Link
-                href={personalData.resume}
-                target="_blank"
-                className="btn-secondary group flex items-center gap-2"
-              >
-                {t("hero.cta_resume")}
-                <MdDownload className="group-hover:translate-y-1 transition-transform" />
-              </Link>
+              <div ref={resumeDropdownRef} className="relative">
+                <button
+                  onClick={() => setResumeOpen((prev) => !prev)}
+                  className="btn-secondary group flex items-center gap-2"
+                >
+                  {t("hero.cta_resume")}
+                  <MdDownload className="group-hover:translate-y-1 transition-transform" />
+                </button>
+
+                {resumeOpen && (
+                  <div className="absolute left-0 top-full mt-2 z-50 min-w-[180px] rounded-xl border border-bg-tertiary bg-bg-secondary shadow-card overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                    <a
+                      href="/cv/CV-Claudinei-Alves-Reis-PT.docx"
+                      download
+                      onClick={() => setResumeOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 text-sm text-content-secondary hover:bg-primary-500/10 hover:text-primary-400 transition-colors"
+                    >
+                      <span className="text-base">🇧🇷</span>
+                      Português
+                    </a>
+                    <div className="h-px bg-bg-tertiary" />
+                    <a
+                      href="/cv/CV-Claudinei-Alves-Reis-EN.docx"
+                      download
+                      onClick={() => setResumeOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 text-sm text-content-secondary hover:bg-primary-500/10 hover:text-primary-400 transition-colors"
+                    >
+                      <span className="text-base">🇺🇸</span>
+                      English
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
