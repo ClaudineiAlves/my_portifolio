@@ -155,6 +155,11 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     verification: {
       google: "7wqyeqXdmhd8uuXTlIk4Gmu-bNZNeD4yCtUxmg9Hr4Y",
+      other: {
+        "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION ?? "",
+        "yandex-verification":
+          process.env.NEXT_PUBLIC_YANDEX_VERIFICATION ?? "",
+      },
     },
     category: "technology",
   };

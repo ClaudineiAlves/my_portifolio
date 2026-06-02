@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
