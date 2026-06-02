@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { projectsData } from "../../utils/Data/projects-data";
 import { certificates } from "./components/certificates/data";
 
-const baseUrl = "https://claudineiportifolio.vercel.app";
+const baseUrl = "https://claudineiportfolio.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -7,7 +7,7 @@
  * Run: `npm run indexnow`
  */
 
-const HOST = "claudineiportifolio.vercel.app";
+const HOST = "claudineiportfolio.vercel.app";
 const KEY = "94f2c6e68c528c33bb83d219a88f779b";
 const SITEMAP_URL = `https://${HOST}/sitemap.xml`;
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;

@@ -20,7 +20,7 @@ const allProjects = [
 
     code: "https://github.com/ClaudineiAlves/my_portifolio",
 
-    demo: "https://claudineiportifolio.vercel.app",
+    demo: "https://claudineiportfolio.vercel.app",
 
     date: "2026-05-11",
 

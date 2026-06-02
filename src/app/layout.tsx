@@ -45,7 +45,7 @@ const metadataDict = {
   pt: {
     title: "Claudinei Alves Portfolio | Portfólio de IA & Cientista de Dados",
     description:
-      "Portfolio de Claudinei Alves — Desenvolvedor focado em Inteligência Artificial, Ciência de Dados e Engenharia de Software. Projetos com Python, Machine Learning e análise de dados aplicada a problemas reais. Acesse claudineiportifolio.vercel.app",
+      "Portfolio de Claudinei Alves — Desenvolvedor focado em Inteligência Artificial, Ciência de Dados e Engenharia de Software. Projetos com Python, Machine Learning e análise de dados aplicada a problemas reais. Acesse claudineiportfolio.vercel.app",
     ogTitle: "Claudinei Alves Portfolio | Portfólio de IA & Ciência de Dados",
     ogDescription:
       "Projetos em Inteligência Artificial, Ciência de Dados e Desenvolvimento de Software focados em resolver problemas reais com tecnologia.",
@@ -57,7 +57,7 @@ const metadataDict = {
   en: {
     title: "Claudinei Alves Portfolio | AI Engineer & Data Scientist",
     description:
-      "Claudinei Alves' Portfolio — Developer focused on Artificial Intelligence, Data Science and Software Engineering. Projects with Python, Machine Learning and data analysis applied to real-world problems. Visit claudineiportifolio.vercel.app",
+      "Claudinei Alves' Portfolio — Developer focused on Artificial Intelligence, Data Science and Software Engineering. Projects with Python, Machine Learning and data analysis applied to real-world problems. Visit claudineiportfolio.vercel.app",
     ogTitle: "Claudinei Alves Portfolio | AI & Data Science Portfolio",
     ogDescription:
       "Projects in Artificial Intelligence, Data Science and Software Development focused on solving real problems with technology.",
@@ -88,7 +88,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const data = metadataDict[locale];
 
   return {
-    metadataBase: new URL("https://claudineiportifolio.vercel.app"),
+    metadataBase: new URL("https://claudineiportfolio.vercel.app"),
     title: {
       default: data.title,
       template: "%s | Claudinei Alves",
@@ -125,7 +125,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: data.ogTitle,
       description: data.ogDescription,
-      url: "https://claudineiportifolio.vercel.app",
+      url: "https://claudineiportfolio.vercel.app",
       siteName: "Claudinei Alves Portfolio",
       images: [
         {
@@ -147,10 +147,10 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@claudinei_alves",
     },
     alternates: {
-      canonical: "https://claudineiportifolio.vercel.app",
+      canonical: "https://claudineiportfolio.vercel.app",
       languages: {
-        "pt-BR": "https://claudineiportifolio.vercel.app/pt",
-        "en-US": "https://claudineiportifolio.vercel.app/en",
+        "pt-BR": "https://claudineiportfolio.vercel.app/pt",
+        "en-US": "https://claudineiportfolio.vercel.app/en",
       },
     },
     verification: {
@@ -175,7 +175,7 @@ function generateStructuredData(locale: ValidLocale) {
     jobTitle: isPt
       ? "Engenheiro de IA & Cientista de Dados"
       : "AI Engineer & Data Scientist",
-    url: "https://claudineiportifolio.vercel.app",
+    url: "https://claudineiportfolio.vercel.app",
     sameAs: [
       "https://github.com/ClaudineiAlves",
       "https://www.linkedin.com/in/claudinei-alves-reis/",
