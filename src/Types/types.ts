@@ -14,7 +14,7 @@ export interface GlowCardProps {
   identifier: string;
 }
 
-interface Project {
+export interface Project {
   id: number;
   name: string;
   tools: string[];
@@ -26,6 +26,7 @@ interface Project {
   images: string[];
   videos?: string[];
   published: boolean;
+  highlights?: string[];
 }
 
 export interface ProjectCardProps {

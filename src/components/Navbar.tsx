@@ -59,6 +59,25 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
+  // Trava o scroll do body enquanto o menu mobile está aberto e permite
+  // fechá-lo com Esc (no mobile o menu cobria a página sem impedir o scroll).
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   const renderLink = (item: { key: string; to: string }, isMobile = false) => {
     const label = t(item.key);
     const isHomePage = pathname === "/";
@@ -176,11 +195,19 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-bg-primary/95 backdrop-blur-2xl border-b border-bg-tertiary md:hidden animate-in slide-in-from-top duration-300">
-          <div className="container mx-auto px-6 py-8 flex flex-col space-y-2">
-            {navItemKeys.map((item) => renderLink(item, true))}
+        <>
+          {/* Backdrop: fecha o menu ao tocar fora dele */}
+          <div
+            className="fixed inset-0 -z-10 bg-black/40 md:hidden"
+            onClick={() => setIsMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="absolute top-full left-0 w-full max-h-[calc(100svh-100%)] overflow-y-auto overscroll-contain bg-bg-primary/95 backdrop-blur-2xl border-b border-bg-tertiary md:hidden animate-in slide-in-from-top duration-300">
+            <div className="px-6 py-6 flex flex-col space-y-2">
+              {navItemKeys.map((item) => renderLink(item, true))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );

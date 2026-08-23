@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { projectsData } from "../../utils/Data/projects-data";
-import { certificates } from "./components/certificates/data";
+import { certificates } from "@/components/sections/certificates/data";
 
 const baseUrl = "https://claudineiportfolio.vercel.app";
 

@@ -10,9 +10,11 @@ import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 import { User, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 function About() {
   const { t } = useLanguage();
+  const isTouch = useIsTouchDevice();
   const { description } = usePersonalData();
 
   useGSAP(() => {
@@ -82,7 +84,7 @@ function About() {
             </div>
 
             {/* Card de descrição com novo estilo */}
-            <div className="relative group p-8 lg:p-10 rounded-3xl border border-bg-tertiary bg-bg-secondary/50 backdrop-blur-3xl overflow-hidden shadow-card hover:border-primary-700/30 transition-all duration-500">
+            <div className="relative group p-6 sm:p-8 lg:p-10 rounded-3xl border border-bg-tertiary bg-bg-secondary/50 backdrop-blur-3xl overflow-hidden shadow-card hover:border-primary-700/30 transition-all duration-500">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform duration-700">
                 <Sparkles className="w-24 h-24 text-primary-500" />
               </div>
@@ -97,7 +99,8 @@ function About() {
             </div>
 
             {/* Stats com nova tipografia */}
-            <div className="flex flex-wrap gap-8 items-center mt-4">
+            {/* Grid de 3 colunas no mobile: em flex-wrap os separadores quebravam de linha */}
+            <div className="grid grid-cols-3 gap-4 items-start sm:flex sm:flex-wrap sm:gap-8 sm:items-center mt-4">
               <div className="flex flex-col group cursor-default">
                 <span className="text-headline font-bold text-content-primary font-variable group-hover:text-primary-400 transition-colors">
                   1+
@@ -107,7 +110,7 @@ function About() {
                 </span>
               </div>
 
-              <div className="w-[1px] h-10 bg-bg-tertiary" />
+              <div className="hidden sm:block w-[1px] h-10 bg-bg-tertiary" />
 
               <div className="flex flex-col group cursor-default">
                 <span className="text-headline font-bold text-content-primary font-variable group-hover:text-primary-400 transition-colors">
@@ -118,7 +121,7 @@ function About() {
                 </span>
               </div>
 
-              <div className="w-[1px] h-10 bg-bg-tertiary" />
+              <div className="hidden sm:block w-[1px] h-10 bg-bg-tertiary" />
 
               <div className="flex flex-col group cursor-default">
                 <span className="text-headline font-bold text-content-primary font-variable group-hover:text-primary-400 transition-colors">
@@ -135,10 +138,11 @@ function About() {
           <div className="lg:col-span-5 order-1 lg:order-2">
             <Tilt
               perspective={1500}
-              glareEnable={true}
+              tiltEnable={!isTouch}
+              glareEnable={!isTouch}
               glareMaxOpacity={0.15}
               glareColor="#ef4444"
-              scale={1.05}
+              scale={isTouch ? 1 : 1.05}
               className="about-image-card"
             >
               <div className="relative group">
@@ -160,8 +164,8 @@ function About() {
                   {/* Overlay gradiente */}
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-60" />
 
-                  {/* Quote no hover */}
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-bg-secondary/80 backdrop-blur-xl border border-bg-tertiary opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  {/* Quote no hover — sempre visível onde não há hover (toque) */}
+                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-bg-secondary/80 backdrop-blur-xl border border-bg-tertiary opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-y-0">
                     <p className="text-content-primary font-bold text-center tracking-widest uppercase text-xs">
                       {t("about.quote")}
                     </p>

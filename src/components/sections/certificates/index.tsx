@@ -3,7 +3,7 @@
 import { Award, Clock, Layers } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCertificates } from "@/hooks/useTranslatedData";
-import RevealText from "../RevealText";
+import RevealText from "@/components/RevealText";
 import CertificateCarousel from "./CertificateCarousel";
 
 // Componente reutilizável para Stats (evita repetição)
@@ -17,7 +17,7 @@ interface StatCardProps {
 function StatCard({ icon, value, label, delay = 0 }: StatCardProps) {
   return (
     <RevealText delay={delay}>
-      <div className="group text-center p-6 rounded-2xl bg-bg-secondary/50 border border-bg-tertiary hover:border-primary-500/30 hover:shadow-glow-sm transition-all duration-300 min-w-[140px]">
+      <div className="group h-full text-center p-4 sm:p-6 rounded-2xl bg-bg-secondary/50 border border-bg-tertiary hover:border-primary-500/30 hover:shadow-glow-sm transition-all duration-300 sm:min-w-[140px]">
         <div className="flex justify-center mb-3 text-primary-500 group-hover:scale-110 transition-transform duration-300">
           {icon}
         </div>
@@ -100,7 +100,7 @@ export default function Certificates() {
         </div>
 
         {/* Stats Grid - usando componente reutilizável */}
-        <div className="flex flex-wrap justify-center gap-6 mb-16">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16">
           {statsData.map((stat, index) => (
             <StatCard
               key={index}

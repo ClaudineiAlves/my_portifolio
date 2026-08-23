@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/../utils/ScrollToTopButton";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { RecaptchaProvider } from "./components/RecaptchaProvider";
-import AccessibilityToggle from "./components/AccessibilityToggle";
-import SkipLink from "./components/SkipLink";
+import { RecaptchaProvider } from "@/components/RecaptchaProvider";
+import AccessibilityToggle from "@/components/AccessibilityToggle";
+import SkipLink from "@/components/SkipLink";
 import { RegisterSW } from "@/components/RegisterSW";
 
 const geistSans = localFont({

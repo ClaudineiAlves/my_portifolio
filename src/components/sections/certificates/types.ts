@@ -1,4 +1,4 @@
-// src/app/components/certificates/types.ts
+// src/components/certificates/types.ts
 export interface Certificate {
   id: string;
   title: string;

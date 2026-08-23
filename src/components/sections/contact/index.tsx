@@ -5,7 +5,7 @@ import { BiLogoLinkedin } from "react-icons/bi";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
 import ContactForm from "./contact-form";
-import RevealText from "../RevealText";
+import RevealText from "@/components/RevealText";
 import { MapPin, Send, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -41,15 +41,16 @@ const ContactInfoCard = ({
     className="group relative flex items-center gap-4 p-4 rounded-2xl border border-bg-tertiary bg-bg-secondary/50 hover:bg-bg-secondary hover:border-primary-500/30 transition-all duration-300 shadow-card hover:shadow-glow-sm"
   >
     <div
-      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-primary-500/10 group-hover:bg-primary-500/20`}
+      className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center transition-all duration-300 bg-primary-500/10 group-hover:bg-primary-500/20`}
     >
       <Icon
         className={`w-6 h-6 transition-transform duration-300 group-hover:scale-110 ${colorClass}`}
       />
     </div>
-    <div className="flex flex-col">
+    {/* min-w-0 + break-words: e-mails/endereços longos estouravam o card no mobile */}
+    <div className="flex flex-col min-w-0">
       <span className="text-caption text-content-subtle mb-1">{label}</span>
-      <span className="text-body text-content-primary font-medium group-hover:text-primary-400 transition-colors">
+      <span className="text-body text-content-primary font-medium group-hover:text-primary-400 transition-colors break-words">
         {value}
       </span>
     </div>
@@ -101,7 +102,7 @@ function ContactSection() {
           {/* Left Side: Form */}
           <div className="lg:col-span-7">
             <RevealText direction="right" delay={300}>
-              <div className="bg-bg-secondary/30 border border-bg-tertiary rounded-3xl p-8 shadow-card">
+              <div className="bg-bg-secondary/30 border border-bg-tertiary rounded-3xl p-5 sm:p-8 shadow-card">
                 <ContactForm />
               </div>
             </RevealText>

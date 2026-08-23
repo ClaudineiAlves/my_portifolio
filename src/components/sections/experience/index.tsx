@@ -3,7 +3,7 @@
 import { experiences } from "@/../utils/Data/experience";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { Calendar, Building2, ChevronRight } from "lucide-react";
-import RevealText from "../RevealText";
+import RevealText from "@/components/RevealText";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 function Experience() {

@@ -5,7 +5,7 @@ import { MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import ProjectCard from "./project-card";
 import { useLanguage } from "@/contexts/LanguageContext";
-import RevealText from "../RevealText";
+import RevealText from "@/components/RevealText";
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -21,15 +21,15 @@ const Projects = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary-600/5 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Header com linhas decorativas */}
-      <div className="flex justify-center mb-20 lg:mb-32">
-        <div className="flex items-center">
-          <span className="w-24 h-[2px] bg-gradient-to-r from-transparent to-primary-600"></span>
+      <div className="flex justify-center mb-16 lg:mb-32 px-4">
+        <div className="flex items-center w-full max-w-full justify-center">
+          <span className="hidden sm:block w-12 lg:w-24 h-[2px] shrink-0 bg-gradient-to-r from-transparent to-primary-600"></span>
           <RevealText>
-            <span className="bg-bg-primary border border-primary-600/30 w-fit text-content-primary p-3 px-8 text-2xl font-bold rounded-full shadow-glow-sm">
+            <span className="block bg-bg-primary border border-primary-600/30 text-content-primary py-3 px-5 sm:px-8 text-lg sm:text-2xl font-bold rounded-full shadow-glow-sm text-center">
               {t("projects.heading")}
             </span>
           </RevealText>
-          <span className="w-24 h-[2px] bg-gradient-to-l from-transparent to-primary-600"></span>
+          <span className="hidden sm:block w-12 lg:w-24 h-[2px] shrink-0 bg-gradient-to-l from-transparent to-primary-600"></span>
         </div>
       </div>
 

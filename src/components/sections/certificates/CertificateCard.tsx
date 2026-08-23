@@ -1,4 +1,4 @@
-// src/app/components/certificates/CertificateCard.tsx
+// src/components/certificates/CertificateCard.tsx
 "use client";
 
 import Image from "next/image";

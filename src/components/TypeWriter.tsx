@@ -1,4 +1,4 @@
-// src/app/components/TypeWriter.tsx
+// src/components/TypeWriter.tsx
 "use client";
 
 import { useState, useEffect } from "react";

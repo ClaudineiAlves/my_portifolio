@@ -1,4 +1,4 @@
-// src/app/components/RevealText.tsx
+// src/components/RevealText.tsx
 "use client";
 
 import { useTextReveal } from "@/hooks/useTextReveal";

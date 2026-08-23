@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Accessibility, Type, Contrast, Moon } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type AccessibilitySettings = {
   highContrast: boolean;
@@ -10,6 +11,7 @@ type AccessibilitySettings = {
 };
 
 export default function AccessibilityToggle() {
+  const { t } = useLanguage();
   const [settings, setSettings] = useState<AccessibilitySettings>({
     highContrast: false,
     largeText: false,
@@ -17,6 +19,29 @@ export default function AccessibilityToggle() {
   });
 
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Fecha ao tocar/clicar fora — no mobile o painel ficava preso aberto
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (e: Event) => {
+      if (!containerRef.current?.contains(e.target as Node)) setIsOpen(false);
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   // Carregar configurações do localStorage
   useEffect(() => {
@@ -64,12 +89,12 @@ export default function AccessibilityToggle() {
   };
 
   return (
-    <div className="fixed bottom-24 right-6 z-50">
+    <div ref={containerRef} className="fixed bottom-24 right-6 z-50">
       {/* Botão principal */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-12 h-12 rounded-full bg-primary-600 hover:bg-primary-500 text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
-        aria-label="Opções de acessibilidade"
+        aria-label={t("accessibility.toggle_label")}
         aria-expanded={isOpen}
       >
         <Accessibility className="w-6 h-6" />
@@ -79,7 +104,7 @@ export default function AccessibilityToggle() {
       {isOpen && (
         <div className="absolute bottom-14 right-0 bg-bg-secondary border border-bg-tertiary rounded-2xl shadow-xl p-4 min-w-[220px] space-y-3">
           <h3 className="text-sm font-bold text-content-primary mb-2">
-            Acessibilidade
+            {t("accessibility.title")}
           </h3>
 
           {/* Alto contraste */}
@@ -93,7 +118,7 @@ export default function AccessibilityToggle() {
             aria-pressed={settings.highContrast}
           >
             <Contrast className="w-5 h-5" />
-            <span className="text-sm">Alto contraste</span>
+            <span className="text-sm">{t("accessibility.high_contrast")}</span>
           </button>
 
           {/* Texto grande */}
@@ -107,7 +132,7 @@ export default function AccessibilityToggle() {
             aria-pressed={settings.largeText}
           >
             <Type className="w-5 h-5" />
-            <span className="text-sm">Texto grande</span>
+            <span className="text-sm">{t("accessibility.large_text")}</span>
           </button>
 
           {/* Reduzir motion */}
@@ -121,7 +146,7 @@ export default function AccessibilityToggle() {
             aria-pressed={settings.reducedMotion}
           >
             <Moon className="w-5 h-5" />
-            <span className="text-sm">Reduzir animações</span>
+            <span className="text-sm">{t("accessibility.reduced_motion")}</span>
           </button>
         </div>
       )}

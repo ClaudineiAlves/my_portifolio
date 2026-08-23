@@ -1,4 +1,4 @@
-// src/app/components/Footer.tsx
+// src/components/Footer.tsx
 "use client";
 
 import { personalData } from "@/../utils/Data/PersonalData";

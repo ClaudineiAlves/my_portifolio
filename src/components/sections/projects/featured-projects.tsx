@@ -8,8 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import ProjectCard from "../project-card";
-import RevealText from "../../RevealText";
+import ProjectCard from "./project-card";
+import RevealText from "@/components/RevealText";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const FeaturedProjects = () => {

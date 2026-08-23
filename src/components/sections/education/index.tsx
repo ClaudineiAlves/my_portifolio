@@ -2,12 +2,14 @@
 
 import { useEducations } from "@/hooks/useTranslatedData";
 import { GraduationCap, Calendar, School } from "lucide-react";
-import SectionReveal from "../SectionReveal";
+import SectionReveal from "@/components/SectionReveal";
 import Tilt from "react-parallax-tilt";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 function Education() {
   const { t } = useLanguage();
+  const isTouch = useIsTouchDevice();
   const educations = useEducations(); // dados já traduzidos
 
   return (
@@ -17,13 +19,13 @@ function Education() {
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="flex justify-center mb-20 lg:mb-32">
-        <div className="flex items-center">
-          <span className="w-24 h-[2px] bg-gradient-to-r from-transparent to-red-600"></span>
-          <span className="bg-[#050505] border border-red-600/30 w-fit text-white p-3 px-8 text-2xl font-bold rounded-full shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+      <div className="flex justify-center mb-16 lg:mb-32 px-4">
+        <div className="flex items-center w-full max-w-full justify-center">
+          <span className="hidden sm:block w-12 lg:w-24 h-[2px] shrink-0 bg-gradient-to-r from-transparent to-red-600"></span>
+          <span className="block bg-[#050505] border border-red-600/30 text-white py-3 px-5 sm:px-8 text-lg sm:text-2xl font-bold rounded-full shadow-[0_0_20px_rgba(220,38,38,0.2)] text-center">
             {t("education.title")}
           </span>
-          <span className="w-24 h-[2px] bg-gradient-to-l from-transparent to-red-600"></span>
+          <span className="hidden sm:block w-12 lg:w-24 h-[2px] shrink-0 bg-gradient-to-l from-transparent to-red-600"></span>
         </div>
       </div>
 
@@ -38,16 +40,17 @@ function Education() {
               >
                 <Tilt
                   perspective={1500}
-                  glareEnable={true}
+                  tiltEnable={!isTouch}
+                  glareEnable={!isTouch}
                   glareMaxOpacity={0.1}
-                  scale={1.02}
+                  scale={isTouch ? 1 : 1.02}
                 >
-                  <div className="group relative p-8 rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md hover:border-red-600/50 transition-all duration-500 shadow-xl overflow-hidden">
-                    <div className="flex items-start gap-6 relative z-10">
-                      <div className="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(239,68,68,0.2)]">
-                        <GraduationCap className="text-red-500 w-7 h-7" />
+                  <div className="group relative p-5 sm:p-8 rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md hover:border-red-600/50 transition-all duration-500 shadow-xl overflow-hidden">
+                    <div className="flex items-start gap-4 sm:gap-6 relative z-10">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(239,68,68,0.2)]">
+                        <GraduationCap className="text-red-500 w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-3 min-w-0">
                         <div className="flex flex-col gap-1">
                           <div className="flex items-center gap-2 text-red-500 text-xs font-bold uppercase tracking-widest">
                             <Calendar className="w-3 h-3" />
@@ -57,8 +60,8 @@ function Education() {
                             {education.title}
                           </h3>
                         </div>
-                        <div className="flex items-center gap-2 text-slate-400 font-medium">
-                          <School className="w-4 h-4 text-red-900" />
+                        <div className="flex items-center gap-2 text-slate-400 font-medium text-sm sm:text-base">
+                          <School className="w-4 h-4 text-red-900 shrink-0" />
                           {education.institution}
                         </div>
                         {/* description é array — renderiza cada parágrafo */}
@@ -97,7 +100,7 @@ function Education() {
 
           <div className="order-first lg:order-last">
             <SectionReveal direction="left">
-              <div className="relative group p-10 lg:p-16 rounded-[40px] border border-white/5 bg-white/[0.01] backdrop-blur-3xl overflow-hidden">
+              <div className="relative group p-6 sm:p-10 lg:p-16 rounded-3xl sm:rounded-[40px] border border-white/5 bg-white/[0.01] backdrop-blur-3xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 via-transparent to-red-900/5" />
                 <div className="relative z-10 flex flex-col gap-8 text-center lg:text-left">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">

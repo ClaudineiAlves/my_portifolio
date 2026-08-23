@@ -3,7 +3,7 @@
 import { skillsData } from "@/../utils/Data/skills";
 import { getSkillIcon, getSkillColor, SkillIcon } from "@/../utils/skill-icons";
 import Marquee from "react-fast-marquee";
-import RevealText from "../RevealText";
+import RevealText from "@/components/RevealText";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 

@@ -12,12 +12,14 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import Tilt from "react-parallax-tilt";
 import { useLanguage } from "@/contexts/LanguageContext";
-import TypeWriter from "../TypeWriter";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
+import TypeWriter from "@/components/TypeWriter";
 
 const indent = (level: number) => ({ paddingLeft: `${level * 2}ch` });
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const isTouch = useIsTouchDevice();
   const { designation, designationAlternateWords } = usePersonalData();
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,7 +29,7 @@ const HeroSection = () => {
   const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: Event) => {
       if (
         resumeDropdownRef.current &&
         !resumeDropdownRef.current.contains(e.target as Node)
@@ -36,7 +38,11 @@ const HeroSection = () => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
   useGSAP(
@@ -278,13 +284,14 @@ const HeroSection = () => {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-900/10 blur-[150px] rounded-full animate-pulse delay-700" />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center px-4 md:px-8 relative z-10 w-full max-w-7xl mx-auto">
-        <div className="order-2 lg:order-1 flex flex-col items-start gap-8">
-          <div className="flex flex-col gap-6">
-            <span className="hero-tag px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-caption">
+        <div className="order-2 lg:order-1 flex flex-col items-start gap-8 min-w-0 w-full">
+          <div className="flex flex-col gap-6 w-full">
+            <span className="hero-tag self-start px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-caption">
               {t("hero.welcome")}
             </span>
 
-            <h1 className="hero-heading text-5xl md:text-6xl lg:text-7xl font-bold text-content-primary leading-[1.1]">
+            {/* text-4xl no mobile: "Desenvolvendo" estourava a largura em 48px */}
+            <h1 className="hero-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-content-primary leading-[1.1] break-words">
               {t("hero.title_line1")}{" "}
               <span className="title-gradient font-extrabold hover:tracking-tight transition-all duration-300 cursor-default">
                 {t("hero.title_line2")}
@@ -304,7 +311,7 @@ const HeroSection = () => {
                 , {t("hero.intro_connector")}
               </span>
               <span
-                className="text-primary-500 ml-2 font-bold inline-block min-w-[250px] text-glow"
+                className="text-primary-500 ml-2 font-bold inline-block sm:min-w-[250px] text-glow"
                 ref={designationRef}
               >
                 {designation}
@@ -340,10 +347,10 @@ const HeroSection = () => {
               </Link>
             </div>
 
-            <div className="hero-cta flex flex-wrap gap-4">
+            <div className="hero-cta flex flex-col sm:flex-row sm:flex-wrap gap-4 w-full">
               <Link
                 href="/#contact"
-                className="btn-primary group flex items-center gap-2"
+                className="btn-primary group flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <span className="relative flex items-center gap-2">
                   {t("hero.cta_contact")}
@@ -351,10 +358,13 @@ const HeroSection = () => {
                 </span>
               </Link>
 
-              <div ref={resumeDropdownRef} className="relative">
+              <div
+                ref={resumeDropdownRef}
+                className="relative w-full sm:w-auto"
+              >
                 <button
                   onClick={() => setResumeOpen((prev) => !prev)}
-                  className="btn-secondary group flex items-center gap-2"
+                  className="btn-secondary group flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   {t("hero.cta_resume")}
                   <MdDownload className="group-hover:translate-y-1 transition-transform" />
@@ -389,12 +399,13 @@ const HeroSection = () => {
         </div>
 
         {/* Code Card */}
-        <div className="order-1 lg:order-2 flex justify-center">
+        <div className="order-1 lg:order-2 flex justify-center min-w-0 w-full">
           <Tilt
             perspective={1000}
-            glareEnable={true}
+            tiltEnable={!isTouch}
+            glareEnable={!isTouch}
             glareMaxOpacity={0.15}
-            scale={1.02}
+            scale={isTouch ? 1 : 1.02}
             transitionSpeed={2000}
             className="w-full max-w-[550px]"
           >
@@ -403,7 +414,7 @@ const HeroSection = () => {
               className="relative rounded-3xl border border-bg-tertiary bg-bg-secondary/90 backdrop-blur-xl overflow-hidden shadow-card group hover:border-primary-700/50 transition-all duration-500"
             >
               {/* Header do editor */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-bg-tertiary bg-bg-tertiary/50">
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-bg-tertiary bg-bg-tertiary/50">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-primary-600" />
                   <div className="w-3 h-3 rounded-full bg-primary-400/50" />
@@ -416,18 +427,19 @@ const HeroSection = () => {
               </div>
 
               {/* Código */}
-              <div className="p-6 lg:p-10 font-mono text-sm leading-relaxed">
-                <div className="space-y-1">
+              {/* overflow-x-auto: as linhas longas não cabem em telas estreitas */}
+              <div className="p-4 sm:p-6 lg:p-10 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
+                <div className="space-y-1 min-w-max">
                   {codeLines.map((item, i) => (
                     <div
                       key={i}
-                      className="flex gap-4 group/line hover:bg-white/5 rounded px-2 -mx-2 transition-colors"
+                      className="flex gap-2 sm:gap-4 group/line hover:bg-white/5 rounded px-2 -mx-2 transition-colors"
                     >
-                      <span className="text-content-subtle select-none w-6 text-right text-xs opacity-50 shrink-0">
+                      <span className="text-content-subtle select-none w-5 sm:w-6 text-right text-[10px] sm:text-xs opacity-50 shrink-0">
                         {item.line}
                       </span>
                       <span
-                        className="text-content-primary"
+                        className="text-content-primary whitespace-nowrap"
                         style={indent(item.level)}
                       >
                         {item.content}
