@@ -30,11 +30,15 @@ const ScrollToTopButton = () => {
 
   return (
     <button
-      className={`fixed bottom-4 right-4 z-50 rounded-full bg-pink-500 text-white p-3 shadow-xl  duration-300 ${
+      // pb-safe: em iPhones o botão ficava sob a barra de gestos
+      style={{ bottom: "max(1rem, env(safe-area-inset-bottom))" }}
+      className={`fixed right-6 z-50 rounded-full bg-primary-600 hover:bg-primary-500 text-white p-3 shadow-xl transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={scrollToTop}
       aria-label="Scroll to top"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
     >
       <ChevronUp className="w-6 h-6" />
     </button>

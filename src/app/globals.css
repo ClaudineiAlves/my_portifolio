@@ -101,6 +101,9 @@
 
   body {
     @apply antialiased;
+    /* Rede de segurança contra scroll horizontal no mobile.
+       `clip` (e não `hidden`) preserva o `position: sticky` da navbar. */
+    overflow-x: clip;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     background-image: radial-gradient(
@@ -584,6 +587,13 @@
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-muted);
+}
+
+/* Body small — usada na navbar, cards de projeto, footer e modal de certificado.
+   Sem `color`: a cor vem das utilities de texto aplicadas junto. */
+.text-body-small {
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 /* Caption/Meta */
