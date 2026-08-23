@@ -188,7 +188,9 @@
         "institution": "Coursera",
         "description": "Machine Learning specialization covering supervised and unsupervised algorithms, neural networks, and AI best practices."
       }
-    }
+    },
+    "carousel_prev": "See previous certificates",
+    "carousel_next": "See next certificates"
   },
   "contact": {
     "section_label": "Communication",
@@ -224,5 +226,43 @@
     "connect_title": "Connect With Me",
     "rights": "All rights reserved.",
     "made_with": "Made in Brazil"
+  },
+  "project_detail": {
+    "back": "Back to Projects",
+    "view_project": "View Project",
+    "view_code": "View Code",
+    "highlights_title": "Key Features",
+    "gallery_title": "Project Images",
+    "tech_title": "Technologies Used",
+    "details_title": "Project Details",
+    "role_label": "Role",
+    "completed_label": "Completed",
+    "cta_talk": "Talk About This Project",
+    "other_projects_title": "Other Projects",
+    "other_projects_subtitle": "Explore other projects and solutions I have built.",
+    "view_all_projects": "View All Projects",
+    "screenshot_alt": "Screenshot"
+  },
+  "certificate_detail": {
+    "back": "Back to Certificates",
+    "badge": "Certificate",
+    "view_official": "View Official Certificate",
+    "share": "Share",
+    "download": "Download",
+    "date_label": "Completion Date",
+    "hours_label": "Course Load",
+    "about_title": "About the Course",
+    "skills_title": "Technologies/Skills",
+    "id_label": "Certificate ID",
+    "related_title": "Related Certificates",
+    "not_found_title": "Certificate not found",
+    "not_found_description": "The certificate you are looking for does not exist or has been removed."
+  },
+  "accessibility": {
+    "title": "Accessibility",
+    "toggle_label": "Accessibility options",
+    "high_contrast": "High contrast",
+    "large_text": "Large text",
+    "reduced_motion": "Reduce animations"
   }
 }

@@ -188,7 +188,9 @@
         "institution": "Coursera",
         "description": "Especialização em Machine Learning cobrindo algoritmos supervisionados e não supervisionados, redes neurais e melhores práticas em IA."
       }
-    }
+    },
+    "carousel_prev": "Ver certificados anteriores",
+    "carousel_next": "Ver próximos certificados"
   },
   "contact": {
     "section_label": "Comunicação",
@@ -224,5 +226,43 @@
     "connect_title": "Conecte-se comigo",
     "rights": "Todos os direitos reservados.",
     "made_with": "Feito no Brasil"
+  },
+  "project_detail": {
+    "back": "Voltar para Projetos",
+    "view_project": "Visualizar Projeto",
+    "view_code": "Ver Código",
+    "highlights_title": "Principais Funcionalidades",
+    "gallery_title": "Imagens do Projeto",
+    "tech_title": "Tecnologias Utilizadas",
+    "details_title": "Detalhes do Projeto",
+    "role_label": "Função",
+    "completed_label": "Concluído",
+    "cta_talk": "Falar Sobre Este Projeto",
+    "other_projects_title": "Outros Projetos",
+    "other_projects_subtitle": "Explore outros projetos e soluções que desenvolvi.",
+    "view_all_projects": "Ver Todos os Projetos",
+    "screenshot_alt": "Captura de tela"
+  },
+  "certificate_detail": {
+    "back": "Voltar para Certificados",
+    "badge": "Certificado",
+    "view_official": "Ver Certificado Oficial",
+    "share": "Compartilhar",
+    "download": "Baixar",
+    "date_label": "Data de Conclusão",
+    "hours_label": "Carga Horária",
+    "about_title": "Sobre o Curso",
+    "skills_title": "Tecnologias/Habilidades",
+    "id_label": "ID do Certificado",
+    "related_title": "Certificados Relacionados",
+    "not_found_title": "Certificado não encontrado",
+    "not_found_description": "O certificado que você está procurando não existe ou foi removido."
+  },
+  "accessibility": {
+    "title": "Acessibilidade",
+    "toggle_label": "Opções de acessibilidade",
+    "high_contrast": "Alto contraste",
+    "large_text": "Texto grande",
+    "reduced_motion": "Reduzir animações"
   }
 }
