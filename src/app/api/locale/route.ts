@@ -27,10 +27,11 @@ export async function POST(request: NextRequest) {
 
     const response = NextResponse.json({ success: true, locale });
 
+    // Mesmas flags do middleware — ver comentários lá.
     response.cookies.set(COOKIE_NAME, locale, {
       httpOnly: true,
-      secure: true,
-      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
       maxAge: 60 * 60 * 24 * 365,
       path: "/",
     });

@@ -47,8 +47,13 @@ export function middleware(request: NextRequest) {
   if (!currentLocale || !VALID_LOCALES.includes(currentLocale as ValidLocale)) {
     response.cookies.set(COOKIE_NAME, sanitizedLocale, {
       httpOnly: true,
-      secure: true,
-      sameSite: "strict",
+      // secure só em produção: em HTTP (teste local pelo IP da rede) o
+      // navegador descartaria o cookie e o idioma não persistiria
+      secure: process.env.NODE_ENV === "production",
+      // Lax, não Strict: com Strict o cookie não é enviado na primeira
+      // navegação vinda de um link externo (LinkedIn, Google), e o visitante
+      // via a página no idioma padrão antes do cliente corrigir
+      sameSite: "lax",
       maxAge: 60 * 60 * 24 * 365,
       path: "/",
     });
